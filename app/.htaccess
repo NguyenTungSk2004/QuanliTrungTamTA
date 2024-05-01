@@ -1,0 +1,5 @@
+# Tắt thử mục lưu trữ
+Options -Indexes
+
+# Từ chối tất cả các yêu cầu đến thư mục app
+Deny from all

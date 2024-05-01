@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /QuanLiTrungTamTA/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+# Tất cả các điều hướng ./abcxzy đều trỏ vào index.php
+
+RewriteRule ^(.*)$ index.php [L,QSA]

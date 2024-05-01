@@ -1,0 +1,26 @@
+/* Custom CSS here */
+/* Style cho sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 60px; /* Điều chỉnh top để sidebar bắt đầu sau navbar */
+  bottom: 0;
+  height: calc(100vh - 60px); /* Chiều cao sidebar bằng chiều cao của viewport trừ đi chiều cao của navbar */
+  width: 17em;
+  background-color: #343a40;
+  padding-top: 60px;
+}
+.sidebar ul.navbar-nav li {
+  padding: 10px 15px;
+}
+.sidebar ul.navbar-nav li a {
+  color: #fff;
+}
+.sidebar ul.navbar-nav li.active a {
+  background-color: #1a1d20;
+}
+/* Style cho nội dung chính */
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+}
