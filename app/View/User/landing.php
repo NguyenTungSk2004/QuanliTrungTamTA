@@ -66,41 +66,44 @@
   <section id="courses" class="py-5">
     <div class="container">
       <h2 class="text-center mb-4">Các khóa học của chúng tôi</h2>
+      <!-- table courses (class row)-->
       <div class="row">
         <!-- PHP Loop to display courses -->
-            <div class="col-lg-4 mb-4">
+        <div class="col-lg-4 mb-4">
             <div class="card">
-            <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" class="card-img-top" alt="Tiếng anh cơ bản">
-            <div class="card-body">
-            <h5 class="card-title">Tiếng anh cơ bản</h5>
-            <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Xem chi tiết</a>
+                <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" class="card-img-top" alt="Tiếng anh cơ bản">
+                <div class="card-body">
+                    <h5 class="card-title">Tiếng anh cơ bản</h5>
+                    <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Xem chi tiết</button>
+                </div>
             </div>
-            </div>
-            </div>
+        </div>
 
             <div class="col-lg-4 mb-4">
             <div class="card">
-            <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" class="card-img-top" alt="Tiếng anh cơ bản">
-            <div class="card-body">
-            <h5 class="card-title">Tiếng anh cơ bản</h5>
-            <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Xem chi tiết</a>
+                <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" class="card-img-top" alt="Tiếng anh cơ bản">
+                <div class="card-body">
+                    <h5 class="card-title">Tiếng anh cơ bản</h5>
+                    <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Xem chi tiết</button>
+                </div>
             </div>
-            </div>
-            </div>
+        </div>
 
             <div class="col-lg-4 mb-4">
             <div class="card">
-            <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" class="card-img-top" alt="Tiếng anh cơ bản">
-            <div class="card-body">
-            <h5 class="card-title">Tiếng anh cơ bản</h5>
-            <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Xem chi tiết</a>
+                <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" class="card-img-top" alt="Tiếng anh cơ bản">
+                <div class="card-body">
+                    <h5 class="card-title">Tiếng anh cơ bản</h5>
+                    <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Xem chi tiết</button>
+                </div>
             </div>
-            </div>
-            </div>
+        </div>
+
       </div>
+      <!-- end table courses (class row)-->
     </div>
   </section>
   

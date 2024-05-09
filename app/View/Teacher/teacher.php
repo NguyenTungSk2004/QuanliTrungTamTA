@@ -11,14 +11,55 @@
 <body>
 
 <?php include './app/View/Template/navbar.php' ?>
-<?php include 'app/View/Template/sidebar.php' ?>
+<?php include './app/View/Template/sidebar.php' ?>
+
 
 <!-- Main Content Section -->
 <div class="main-content">
     <div class="container mt-5">
-    <h2>Quản lí giáo viên</h2>
+      <h2>Quản lí giáo viên</h2>
+      <p>Đây là trang quản lí giáo viên. Bạn có thể thêm, sửa, xóa thông tin về giáo viên ở đây.</p>
+      <!-- Nút thêm học viên -->
+        <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#addTeacher">
+          Thêm giáo viên
+        </button>
+      <!-- Bảng dữ liệu quản lí học viên -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Số điện thoại</th>
+            <th scope="col">Email</th>
+            <th scope="col">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Nguyễn Văn A</td>
+            <td>123 Đường ABC, Quận XYZ, TP HCM</td>
+            <td>0123456789</td>
+            <td>nguyenvana@example.com</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editTeacher">Sửa</button>
+              <button type="button" class="btn btn-danger btn-sm">Xóa</button>
+              <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detailTeacher">Xem chi tiết</button>
+            </td>
+          </tr>
+          <!-- Thêm các dòng khác tương ứng với thông tin của các học viên khác -->
+        </tbody>
+      </table>
     </div>
-</div>
+  </div>
+  
+
+<?php include './app/View/Teacher/addTeacher.php'?>
+<?php include './app/View/Teacher/editTeacher.php'?>
+<?php include './app/View/Teacher/detailTeacher.php'?>
+
+
 
 <!-- Bootstrap JS and jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

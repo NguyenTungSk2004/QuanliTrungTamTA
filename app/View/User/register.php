@@ -12,13 +12,25 @@
               
       <form id="registerForm" action="#" method="POST">
             <div class="form-group">
-              <label for="newUsername">Tên đăng nhập:</label>
-              <input type="text" class="form-control" id="newUsername" name="newUsername" required>
+              <label for="full_name">Tên người dùng:</label>
+              <input type="text" class="form-control" id="full_name" name="full_name" required>
             </div>
+
+            <div class="form-group">
+              <label for="phone">Số điện thoại:</label>
+              <input type="text" class="form-control" id="phone" name="phone" required>
+            </div>
+      
             <div class="form-group">
               <label for="email">Email:</label>
               <input type="email" class="form-control" id="email" name="email" required>
             </div>
+
+            <div class="form-group">
+              <label for="newUsername">Tên đăng nhập:</label>
+              <input type="text" class="form-control" id="newUsername" name="newUsername" required>
+            </div>
+            
             <div class="form-group">
               <label for="newPassword">Mật khẩu:</label>
               <input type="password" class="form-control" id="newPassword" name="newPassword" required>

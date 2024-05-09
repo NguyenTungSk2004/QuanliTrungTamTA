@@ -5,5 +5,4 @@ class TeacherController {
         include './app/View/Teacher/teacher.php';
     }
 }
-
 ?>

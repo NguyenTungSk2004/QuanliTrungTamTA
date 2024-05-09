@@ -22,7 +22,7 @@ $current_page = end($current_page);
       <a class="nav-link " href="./course"><i class="fas fa-book"></i> Quản lí khóa học</a>
     </li>
     <li class="nav-item <?php if($current_page == 'payment') echo 'active';?>">
-      <a class="nav-link " href="./payment"><i class="fas fa-money-bill-wave"></i> Quản lí thanh toán</a>
+      <a class="nav-link " href="./payment"><i class="fas fa-money-bill-wave"></i> Quản lí thu chi</a>
     </li>
     <li class="nav-item <?php if($current_page == 'achievement') echo 'active';?>">
       <a class="nav-link " href="./achievement"><i class="fas fa-graduation-cap"></i> Quản lí kết quả học tập</a>

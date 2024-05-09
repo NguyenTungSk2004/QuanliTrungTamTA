@@ -11,7 +11,7 @@
 <body>
 
 <?php include './app/View/Template/navbar.php' ?>
-<?php include 'app/View/Template/sidebar.php' ?>
+<?php include './app/View/Template/sidebar.php' ?>
 
 
 <!-- Main Content Section -->
@@ -20,7 +20,7 @@
       <h2>Quản lí học viên</h2>
       <p>Đây là trang quản lí học viên. Bạn có thể thêm, sửa, xóa thông tin về học viên ở đây.</p>
       <!-- Nút thêm học viên -->
-        <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#addCourseModal">
+        <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#addStudent">
           Thêm học viên
         </button>
       <!-- Bảng dữ liệu quản lí học viên -->
@@ -43,9 +43,9 @@
             <td>0123456789</td>
             <td>nguyenvana@example.com</td>
             <td>
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal">Sửa</button>
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editStudent">Sửa</button>
               <button type="button" class="btn btn-danger btn-sm">Xóa</button>
-              <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detailModal">Xem chi tiết</button>
+              <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detailStudent">Xem chi tiết</button>
             </td>
           </tr>
           <!-- Thêm các dòng khác tương ứng với thông tin của các học viên khác -->
@@ -55,10 +55,10 @@
   </div>
   
 
-<?php include 'app/View/Student/addModal.php'?>
-<?php include 'app/View/Student/editModal.php'?>
-<?php include 'app/View/Student/detailModal.php'?>
-<?php include 'app/View/Student/paymentModal.php'?>
+<?php include './app/View/Student/addStudent.php'?>
+<?php include './app/View/Student/editStudent.php'?>
+<?php include './app/View/Student/detailStudent.php'?>
+<?php include './app/View/Student/paymentStudent.php'?>
 
 
 
