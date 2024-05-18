@@ -6,7 +6,11 @@
   <title>Quản lí khóa học</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
   <link rel="stylesheet" href=".\public\css\sidebar.css">
+  <link rel="stylesheet" href=".\public\css\cssProject.css">
+  <!-- include style and animation -->
+  <script src="./public/js/Course.js"></script>
 </head>
 <body>
 
@@ -14,13 +18,13 @@
 <?php include 'app/View/Template/sidebar.php' ?>
 
 <!-- Main Content Section -->
-<div class="main-content">
+<div class="main-content ">
     <div class="container mt-5">
     <h2>Quản lí khóa học</h2>
       <p>Đây là trang quản lí khóa học. Bạn có thể thêm, sửa, xóa thông tin về khóa học ở đây.</p>
       <!-- Nút thêm học viên -->
         <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#addCourse">
-          Thêm khóa học
+          + Thêm khóa học
         </button>
       
       <!-- table course class row -->
@@ -31,8 +35,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Tiếng anh cơ bản</h5>
                     <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">Xem chi tiết</button>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCourse">Sửa</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailCourse">Xem chi tiết</button>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#">Xóa</button>
                 </div>
             </div>
@@ -44,9 +47,9 @@
 
 <!-- include component -->
 <?php include './app/View/Course/addCourse.php'?>
+<?php include './app/View/Course/detailCourse.php'?>
 
-<!-- include style and animation -->
-<script src="./public/js/SelectionImage.js"></script>
+
 
 <!-- Bootstrap JS and jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

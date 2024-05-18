@@ -21,11 +21,11 @@
       <p>Đây là trang quản lí học viên. Bạn có thể thêm, sửa, xóa thông tin về học viên ở đây.</p>
       <!-- Nút thêm học viên -->
         <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#addStudent">
-          Thêm học viên
+          + Thêm học viên
         </button>
       <!-- Bảng dữ liệu quản lí học viên -->
       <table class="table">
-        <thead>
+        <thead class="thead-dark">
           <tr>
             <th scope="col">STT</th>
             <th scope="col">Tên</th>

@@ -21,11 +21,11 @@
       <p>Đây là trang quản lí giáo viên. Bạn có thể thêm, sửa, xóa thông tin về giáo viên ở đây.</p>
       <!-- Nút thêm học viên -->
         <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#addTeacher">
-          Thêm giáo viên
+           + Thêm giáo viên
         </button>
       <!-- Bảng dữ liệu quản lí học viên -->
       <table class="table">
-        <thead>
+        <thead class="thead-dark">
           <tr>
             <th scope="col">STT</th>
             <th scope="col">Tên</th>
