@@ -21,11 +21,20 @@ class Route {
             
             $controllerName = $parts[0];
             $action = $parts[1];
-            
+            $param = null;
+
+            if(isset($parts[2])){
+                $param = $parts[2];
+            }
             $controller = new $controllerName();
-            $controller->$action();
+
+            if(!isset($param))
+                $controller->$action($param);
+            else{
+                $controller->$action($param);
+            }
         } else {
-            echo '404 Not Found';
+            echo 'Router not found';
         }
     }
 }

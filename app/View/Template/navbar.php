@@ -1,7 +1,7 @@
 <!-- Navbar Section -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> <!-- Thêm class 'fixed-top' để navbar cố định ở đầu trang -->
   <div class="container">
-    <a class="navbar-brand" href="./home">SK English</a>
+    <a class="navbar-brand" href="/QuanLiTrungTamTA/home">SK English</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

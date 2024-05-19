@@ -10,22 +10,23 @@
       </div>
       <div class="modal-body">
         <!-- Form chỉnh sửa thông tin học viên -->
-        <form action="#" method="POST">
+        <form action="./student/editStudent" method="POST">
+          <input type="hidden" name="student_id">
           <div class="form-group">
             <label for="name">Tên:</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" name="name">
           </div>
           <div class="form-group">
             <label for="address">Địa chỉ:</label>
-            <input type="text" class="form-control" id="address">
+            <input type="text" class="form-control" name="address">
           </div>
           <div class="form-group">
             <label for="phone">Số điện thoại:</label>
-            <input type="text" class="form-control" id="phone">
+            <input type="text" class="form-control" name="phone">
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" name="email">
           </div>
           <!-- Thêm các trường thông tin khác cần chỉnh sửa -->
           <button type="submit" class="btn btn-primary">Lưu thay đổi</button>

@@ -10,26 +10,26 @@
       </div>
       <div class="modal-body">
         <!-- Form thêm học viên  -->
-        <form action="#" method="POST">
+        <form action="./student/addStudent" method="POST">
           <div class="form-group">
             <label for="name">Tên:</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" name="name">
           </div>
           <div class="form-group">
             <label for="address">Địa chỉ:</label>
-            <input type="text" class="form-control" id="address">
+            <input type="text" class="form-control" name="address">
           </div>
           <div class="form-group">
             <label for="phone">Số điện thoại:</label>
-            <input type="text" class="form-control" id="phone">
+            <input type="text" class="form-control" name="phone">
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" name="email">
           </div>
           <div class="form-group">
             <label for="idCourse">Khóa học:</label>
-            <select name="idCourse" id="idCourse" class="form-control">
+            <select name="idCourse" id="idCourse" class="form-control" multiple>
                 <option value="pro">Tiếng anh pro</option>
                 <option value="basic">Tiếng anh basic</option>
                 <option value="speaking">Tiếng anh speaking</option>

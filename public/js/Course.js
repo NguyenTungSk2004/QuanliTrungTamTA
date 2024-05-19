@@ -19,3 +19,21 @@ function handleImageSourceChange(idModal, selectedValue) {
         });
     }
 }
+
+try {
+    var SelectionImageFieldAddCourse = document.querySelectorAll('#addCourse input[type="radio"][name="imageSource"]');
+    SelectionImageFieldAddCourse.forEach(function(radio) {
+      radio.addEventListener("change", function() {
+        handleImageSourceChange("addCourse",this.value);
+      });
+    });
+} catch (error) {
+    console.error(error);
+}
+
+// Xóa khóa học
+function deleteCourse(courseId) {
+    if (confirm('Bạn có chắc chắn muốn xóa khóa học này không?')) {
+        document.getElementById('deleteForm' + courseId).submit();
+    }
+  }

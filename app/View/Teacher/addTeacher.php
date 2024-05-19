@@ -10,53 +10,30 @@
       </div>
       <div class="modal-body">
         <!-- Form thêm giáo viên  -->
-        <form action="#" method="POST">
+        <form action="./teacher/addTeacher" method="POST">
 
           <div class="form-group">
-            <label for="teacherName">Tên:</label>
-            <input type="text" class="form-control" id="teacherName">
+            <label for="name">Tên:</label>
+            <input type="text" class="form-control" name="name">
           </div>
 
           <div class="form-group">
-            <label for="teacherAddress">Địa chỉ:</label>
-            <input type="text" class="form-control" id="teacherAddress">
+            <label for="address">Địa chỉ:</label>
+            <input type="text" class="form-control" name="address">
           </div>
 
           <div class="form-group">
-            <label for="phoneTeacher">Số điện thoại:</label>
-            <input type="text" class="form-control" id="phoneTeacher">
+            <label for="phone">Số điện thoại:</label>
+            <input type="text" class="form-control" name="phone">
           </div>
 
           <div class="form-group">
-            <label for="emailTeacher">Email:</label>
-            <input type="email" class="form-control" id="emailTeacher">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name="email">
           </div>
 
-          <div class="form-group">
-            <label>Khóa học:</label>
-
-            <div class="form-check">
-                <input type="checkbox" name="english" id="pro_Add" class="form-check-input" value="pro">
-                <label for="pro_Add" class="form-check-label">Tiếng anh pro</label>
-            </div>
-
-            <div class="form-check">
-                <input type="checkbox" name="english" id="basic_Add" class="form-check-input" value="basic">
-                <label for="basic_Add" class="form-check-label">Tiếng anh basic</label>
-            </div>
-
-            <div class="form-check">
-                <input type="checkbox" name="english" id="speaking_Add" class="form-check-input" value="speaking">
-                <label for="speaking_Add" class="form-check-label">Tiếng anh speaking</label>
-            </div>
-
-            <div class="form-check">
-                <input type="checkbox" name="english" id="listening_Add" class="form-check-input" value="listening">
-                <label for="listening_Add" class="form-check-label">Tiếng anh listening</label>
-            </div>
-        </div>
           <!-- Thêm các trường thông tin khác cần chỉnh sửa -->
-          <button type="submit" class="btn btn-primary">Thêm giáo viên</button>
+          <button type="submit" class="btn btn-success">+ Thêm giáo viên</button>
         </form>
       </div>
     </div>

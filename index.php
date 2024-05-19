@@ -1,5 +1,6 @@
 <?php
 
+include './app/Model/Model.php';
 include './app/Route/Route.php';
 include './app/Controller/HomeController.php';
 include './app/Controller/StudentController.php';
@@ -22,12 +23,21 @@ $route->get('/home', 'HomeController@index');
 
 // Điều hướng của quản lí học viên
 $route->get('/student', 'StudentController@index');
+$route->post('/student/addStudent', 'StudentController@addStudent');
+$route->post('/student/deleteStudent', 'StudentController@deleteStudent');
+$route->post('/student/editStudent', 'StudentController@editStudent');
 
 // Điều hướng của quản lí giáo viên
 $route->get('/teacher', 'TeacherController@index');
+$route->get('/teacher/addTeacher', 'TeacherController@addTeacher');
+$route->get('/teacher/editTeacher', 'TeacherController@editTeacher');
+$route->get('/teacher/deleteTeacher', 'TeacherController@deleteTeacher');
 
 // Điều hướng của quản lí khóa học
 $route->get('/course', 'CourseController@index');
+$route->get('/course/detail', 'CourseController@show@detailCourse.php');
+$route->post('/course/addCourse', 'CourseController@addCourse');
+$route->post('/course/deleteCourse', 'CourseController@deleteCourse');
 
 // Điều hướng của quản lí thanh toán
 $route->get('/payment', 'PaymentController@index');

@@ -1,4 +1,4 @@
-<!-- Modal xem chi tiết-->
+<!-- Modal xem chi tiết -->
 <div class="modal fade" id="detailStudent" tabindex="-1" role="dialog" aria-labelledby="detailStudentLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -10,10 +10,10 @@
       </div>
       <div class="modal-body">
         <!-- Nội dung chi tiết của học viên -->
-        <p>Tên: Nguyễn Văn A</p>
-        <p>Địa chỉ: 123 Đường ABC, Quận XYZ, TP HCM</p>
-        <p>Số điện thoại: 0123456789</p>
-        <p>Email: nguyenvana@example.com</p>
+        <p><b>Tên:</b></p>
+        <p><b>Địa chỉ:</b></p>
+        <p><b>Số điện thoại:</b></p>
+        <p><b>Email:</b></p>
         
         <!-- Bảng hiển thị các khóa học đã đăng ký của học viên -->
         <h5>Các khóa học đã đăng ký</h5>

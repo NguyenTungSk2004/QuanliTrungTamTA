@@ -10,50 +10,27 @@
       </div>
       <div class="modal-body">
         <!-- Form chỉnh sửa thông tin giáo viên -->
-        <form action="#" method="POST">
+        <form action="./teacher/editTeacher" method="POST">
+          <input type="hidden" name="teacher_id">
           <div class="form-group">
             <label for="name">Tên:</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" name="name">
           </div>
           <div class="form-group">
             <label for="address">Địa chỉ:</label>
-            <input type="text" class="form-control" id="address">
+            <input type="text" class="form-control" name="address">
           </div>
           <div class="form-group">
             <label for="phone">Số điện thoại:</label>
-            <input type="text" class="form-control" id="phone">
+            <input type="text" class="form-control" name="phone">
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" name="email">
           </div>
 
-          <div class="form-group">
-            <label>Khóa học:</label>
-
-            <div class="form-check">
-                <input type="checkbox" name="english" id="pro_Edit" class="form-check-input" value="pro">
-                <label for="pro_Edit" class="form-check-label">Tiếng anh pro</label>
-            </div>
-
-            <div class="form-check">
-                <input type="checkbox" name="english" id="basic_Edit" class="form-check-input" value="basic">
-                <label for="basic_Edit" class="form-check-label">Tiếng anh basic</label>
-            </div>
-
-            <div class="form-check">
-                <input type="checkbox" name="english" id="speaking_Edit" class="form-check-input" value="speaking">
-                <label for="speaking_Edit" class="form-check-label">Tiếng anh speaking</label>
-            </div>
-
-            <div class="form-check">
-                <input type="checkbox" name="english" id="listening_Edit" class="form-check-input" value="listening">
-                <label for="listening_Edit" class="form-check-label">Tiếng anh listening</label>
-            </div>
-        </div>
-
           <!-- Thêm các trường thông tin khác cần chỉnh sửa -->
-          <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+          <button type="submit" class="btn btn-primary"> Lưu thay đổi</button>
         </form>
       </div>
     </div>
