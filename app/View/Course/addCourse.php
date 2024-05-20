@@ -24,7 +24,7 @@
 
             <div class="form-group">
               <label for="description">Mô tả:</label>
-              <input type="text" class="form-control" name="description" placeholder="Mô tả khóa học" required>
+              <textarea type="text" class="form-control" name="description" placeholder="Mô tả khóa học" required></textarea>
             </div>
 
 

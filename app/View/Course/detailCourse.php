@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   
   <link rel="stylesheet" href="..\public\css\cssProject.css">
-  <!-- include style and animation -->
-  <script src="./public/js/Course.js"></script>
+
 </head>
 <body>
 
@@ -28,19 +24,23 @@
       <!-- Nội dung khóa học-->
       <div class="row">
         <div class="col-md-6">
-        <p><b>Mã khóa học: </b> TA-N01</p>
-        <p><b>Tiêu đề: </b> Tiếng anh cơ bản</p>
-        <p><b>Thời lượng: </b> 3 tháng</p>
-        <p><b>Ngày bắt đầu: </b> 12/5/2024</p>
-        <p><b>Ngày kết thúc: </b> 12/8/2024</p>
-        <p><b>Mô tả: </b> Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
+        <p><b>Mã khóa học: </b> <?php echo $course['course_id']?></p>
+        <p><b>Tiêu đề: </b> <?php echo $course['title']?></p>
+        <p><b>Thời lượng: </b> <?php echo $course['duration']?></p>
+        <p><b>Ngày bắt đầu: </b> <?php echo $course['start_date']?></p>
+        <p><b>Ngày kết thúc: </b> <?php echo $course['end_date']?></p>
+        <p><b>Mô tả: </b> <?php echo $course['description']?> </p>
         <button type="button" class="btn btn-warning mb-4" data-toggle="modal" data-target="#editCourse">
           <i class="fas fa-edit"></i>
            Chỉnh sửa
         </button> 
         </div>
         <div class="col-md-6">
-            <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" alt="Hình ảnh khóa học" style="max-width: 100%; height: 15em; margin-bottom: 3rem;">
+            <img src="
+            <?php 
+                  echo strpos($course['img'], 'http') === 0 
+                  ? $course['img'] : '../' . $course['img']?>" 
+              alt="Hình ảnh <?php echo $course['title']?>" style="max-width: 100%; height: 15em; margin-bottom: 3rem;">
         </div>
       </div>
       
@@ -50,44 +50,80 @@
       <div class="table-responsive">
         <table class="table table-striped">
           <thead class="thead-dark">
-        <tr>
-          <th>STT</th>
-          <th>Mã</th>
-          <th>Giáo viên</th>
-          <th>Thời gian</th>
-          <th>Bắt đầu</th>
-          <th>Kết thúc</th>
-          <th>Thao tác</th>
-        </tr>
+              <tr>
+                <th>STT</th>
+                <th>Mã</th>
+                <th>Giáo viên</th>
+                <th>Thời gian</th>
+                <th>Bắt đầu</th>
+                <th>Kết thúc</th>
+                <th>Thao tác</th>
+              </tr>
           </thead>
           <tbody>
-        <tr class="table-row-hover" data-toggle="modal" data-target="#detailSchedule">
-          <td scope="row">1</td>
-          <td>LTR001</td>
-          <td>Nguyễn Tùng Sk</td>
-          <td>Thứ 2, Thứ 3, Thứ 4</td>
-          <td>8:00</td>
-          <td>10:00</td>
-          <td><a class="btn btn-sm btn-danger" onclick="event.stopPropagation();"><i class="fas fa-trash"></i> Xóa</a></td>
-        </tr>
-        <tr class="table-row-hover" data-toggle="modal" data-target="#detailSchedule">
-          <td scope="row">2</td>
-          <td>LTR002</td>
-          <td>Đỗ Trung kiên</td>
-          <td>3, 5, 7</td>
-          <td>17:00</td>
-          <td>19:00</td>
-          <td><a class="btn btn-sm btn-danger" onclick="event.stopPropagation();"><i class="fas fa-trash"></i> Xóa</a></td>
-        </tr>
-        <tr class="table-row-hover" data-toggle="modal" data-target="#detailSchedule">
-          <td scope="row">3</td>
-          <td>LTR003</td>
-          <td>Nguyễn Khánh Dương</td>
-          <td>2, 3, 4</td>
-          <td>20:00</td>
-          <td>22:00</td>
-          <td><a class="btn btn-sm btn-danger" onclick="event.stopPropagation();"><i class="fas fa-trash"></i> Xóa</a></td>
-        </tr>
+            <?php foreach($schedules as $key => $schedule):?>
+              <!-- form delete schedule -->
+              <form 
+                    action="/QuanLiTrungTamTA/course/deleteSchedule" 
+                    method="POST" 
+                    id="deleteSchedule<?php echo $schedule['schedule_id']?>"
+              >
+                <input 
+                    type="hidden" 
+                    name="schedule_id" 
+                    value="<?php echo $schedule['schedule_id']?>"
+                >
+                <input 
+                    type="hidden"  
+                    name="course_id" 
+                    value="<?php echo $course['course_id']?>"
+                >
+              </form>
+              <!-- end form delete schedule -->
+                <tr 
+                    class="table-row-hover" 
+                    data-toggle="modal" 
+                    data-target="#detailSchedule"
+                >
+                  <td scope="row">
+                    <?php echo $key+1?>
+                  </td>
+                  <td>
+                    <?php echo $schedule['schedule_id']?>
+                  </td>
+                  <td>
+                    <?php
+                    $teacher_name = $this->db->table('teachers')->get(['teacher_id' =>$schedule['teacher_id']])[0]['name'];
+                    if(isset($teacher_name)) {
+                      echo $teacher_name;
+                    } else {
+                      echo "chưa cập nhật";
+                      $stmt = "deleteSchedule".$schedule['schedule_id'];
+                      echo "<script>document.getElementById('$stmt').submit();</script>";
+                    }
+                    ?>
+                  </td>
+                  <td>
+                    <?php echo $schedule['day_of_week']?>
+                  </td>
+                  <td>
+                    <?php echo $schedule['start_time']?>
+                  </td>
+                  <td>
+                    <?php echo $schedule['end_time']?>
+                  </td>
+                  <td>
+
+                    <a 
+                        type="button" 
+                        class="btn btn-sm btn-danger" 
+                        onclick="document.getElementById('deleteSchedule<?php echo $schedule['schedule_id']?>').submit();"
+                    >
+                        <i class="fas fa-trash"></i> Xóa
+                    </a>
+                  </td>
+                </tr>
+              <?php endforeach;?>
           </tbody>
         </table>
       </div>
@@ -112,5 +148,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- include style and animation -->
+<script src="../public/js/Course.js"></script>
 </body>
 </html>

@@ -40,6 +40,10 @@ $route->get('/course', 'CourseController@index');
 $route->get('/course/detail', 'CourseController@show@detailCourse.php');
 $route->post('/course/addCourse', 'CourseController@addCourse');
 $route->post('/course/deleteCourse', 'CourseController@deleteCourse');
+$route->post('/course/edit', 'CourseController@editCourse');
+//Điều hướng của quản lí lịch trình
+$route->post('/course/addSchedule', 'ScheduleController@addSchedule');
+$route->post('/course/deleteSchedule', 'ScheduleController@deleteSchedule');
 
 // Điều hướng của quản lí thanh toán
 $route->get('/payment', 'PaymentController@index');

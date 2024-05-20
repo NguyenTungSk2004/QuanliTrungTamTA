@@ -37,7 +37,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $course['title']?></h5>
                     <p class="card-text"><?php echo $course['description']?></p>
-                    <a href="./course/detail" type="button" class="btn btn-primary">
+                    <a href="./course/detail?course_id=<?php echo $course['course_id']; ?>" class="btn btn-primary">
                       Xem chi tiết
                     </a>
                     <div class="d-inline">

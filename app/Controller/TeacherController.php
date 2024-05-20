@@ -27,7 +27,7 @@ class TeacherController {
             $address = $_POST['address'];
             $phone = $_POST['phone'];
             $email = $_POST['email'];
-            $teacher_id = $this->db->randomId('GV');
+            $teacher_id = $this->db->randomId('teacher_id','GV');
             $data = [
                 'teacher_id' => $teacher_id,
                 'name' => $name,

@@ -30,7 +30,7 @@ class StudentController {
             $address = $_POST['address'];
             $phone = $_POST['phone'];
             $email = $_POST['email'];
-            $student_id = $this->db->randomId('HV');
+            $student_id = $this->db->randomId('student_id','HV');
             $data = [
                 'student_id' => $student_id,
                 'name' => $name,
@@ -45,7 +45,7 @@ class StudentController {
             }
         }
         
-        header('location: ../student');
+        header('location: /QuanLiTrungTamTA/student');
     }
 
     public function editStudent() {
@@ -67,7 +67,7 @@ class StudentController {
                 $this->db->logToConsole('Lỗi chỉnh sửa dữ liệu student: ' . $e->getMessage());
             }
         }
-        header('location: ../student');
+        header('location: /QuanLiTrungTamTA/student');
     }
 
     public function deleteStudent() {
@@ -81,7 +81,7 @@ class StudentController {
         } catch(PDOException $e) {
             $this->db->logToConsole('Lỗi xóa dữ liệu student: ' . $e->getMessage());
         }
-        header('location: ../student');
+        header('location: /QuanLiTrungTamTA/student');
     }
 
 
@@ -96,7 +96,6 @@ class StudentController {
                 $this->db->logToConsole('Lỗi tìm kiếm dữ liệu student: ' . $e->getMessage());
             }
         }
-        // header('location: ../student');
         include './app/View/Student/student.php';
     }
     

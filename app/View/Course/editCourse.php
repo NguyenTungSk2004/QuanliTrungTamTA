@@ -10,27 +10,27 @@
             </div>
             <div class="modal-body">
                 <!-- Form sửa khóa học  -->
-                <form action="#" method="POST">
+                <form action="/QuanLiTrungTamTA/course/edit" method="POST" enctype="multipart/form-data">
 
                 <div class="form-group">
-                    <label for="nameCourse">Khóa học:</label>
-                    <input type="text" class="form-control" name="nameCourse">
+                    <label for="course_id">Khóa học:</label>
+                    <input type="text" class="form-control" name="course_id" value="<?php echo $course['course_id']?>" readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="titleCourse">Tiêu đề:</label>
-                    <input type="text" class="form-control" name="titleCourse">
+                    <input type="text" class="form-control" name="titleCourse" value="<?php echo $course['title']?>">
                 </div>
 
                 <div class="form-group">
                     <label for="description">Mô tả:</label>
-                    <input type="text" class="form-control" name="description">
+                    <textarea type="text" class="form-control" name="description"> <?php echo $course['description']?></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="duration">Thời lượng:</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" name="duration">
+                        <input type="number" class="form-control" name="duration" value="<?php echo $course['duration']?>">
                         <div class="input-group-append">
                             <span class="input-group-text">Tháng</span>
                         </div>
@@ -39,12 +39,12 @@
 
                 <div class="form-group">
                     <label for="start_date">Ngày bắt đầu:</label>
-                    <input type="date" class="form-control" name="start_date">
+                    <input type="date" class="form-control" name="start_date" value="<?php echo $course['start_date']?>">
                 </div>
 
                 <div class="form-group">
                     <label for="end_date">Ngày kết thúc:</label>
-                    <input type="date" class="form-control" name="end_date">
+                    <input type="date" class="form-control" name="end_date" value="<?php echo $course['end_date']?>">
                 </div>
 
                 <div class="form-group">
@@ -69,22 +69,11 @@
                 </div>
 
                 <!-- Thêm các trường thông tin khác cần chỉnh sửa -->
-                <button type="submit" class="btn btn-primary">Sửa khóa học</button>
+                <button type="submit" class="btn btn-primary">Lưu</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-        try {
-            var SelectionImageFieldEditCourse = document.querySelectorAll('#editCourse input[type="radio"][name="imageSource"]');
-            SelectionImageFieldEditCourse.forEach(function(radio) {
-                radio.addEventListener("change", function() {
-                    handleImageSourceChange("editCourse",this.value);
-                });
-            });
-        } catch (error) {
-            console.error(error);
-        }
-</script>
+
