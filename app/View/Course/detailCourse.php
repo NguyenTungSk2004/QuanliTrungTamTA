@@ -1,10 +1,4 @@
 
-<!-- include component -->
-<?php include './app/View/Course/detailSchedule.php'?>
-<?php include './app/View/Course/addSchedule.php'?>
-<?php include './app/View/Course/editCourse.php'?>
-
-
 
 
 <!DOCTYPE html>
@@ -16,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   
-  <link rel="stylesheet" href="..\public\css\sidebar.css">
   <link rel="stylesheet" href="..\public\css\cssProject.css">
   <!-- include style and animation -->
   <script src="./public/js/Course.js"></script>
@@ -110,10 +103,10 @@
   </div>
 </div>
 
-
-
 <!-- include component -->
-<?php include './app/View/Course/addCourse.php'?>
+<?php include './app/View/Course/detailSchedule.php'?>
+<?php include './app/View/Course/addSchedule.php'?>
+<?php include './app/View/Course/editCourse.php'?>
 
 <!-- Bootstrap JS and jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

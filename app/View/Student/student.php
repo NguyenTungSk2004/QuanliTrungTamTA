@@ -15,10 +15,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
   <!-- My css -->
-  <link rel="stylesheet" href=".\public\css\sidebar.css">
   <link rel="stylesheet" href=".\public\css\cssProject.css">
-
-
+  <link rel="stylesheet" href="..\public\css\cssProject.css">
 </head>
 <body>
 
@@ -157,5 +155,6 @@
 
   <!-- My javascript -->
   <script src=".\public\js\Student.js"></script>
+  <script src="..\public\js\Student.js"></script>
 </body>
 </html>

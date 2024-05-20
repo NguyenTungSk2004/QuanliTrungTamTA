@@ -14,9 +14,10 @@ $route = new Route();
 
 // Điều hướng của quản lí user
 $route->get('/', 'LandingController@index');
-$route->get('/login', 'LoginController@index');
-$route->get('/register', 'RegisterController@index');
-$route->get('/forgotPassword', 'ForgotPasswordController@index');
+$route->post('/login', 'LoginController@index');
+$route->post('/logout', 'LogoutController@index');
+$route->post('/register', 'RegisterController@index');
+$route->post('/forgotPassword', 'ForgotPasswordController@index');
 
 //Điều hướng của trang chủ
 $route->get('/home', 'HomeController@index');
@@ -26,6 +27,7 @@ $route->get('/student', 'StudentController@index');
 $route->post('/student/addStudent', 'StudentController@addStudent');
 $route->post('/student/deleteStudent', 'StudentController@deleteStudent');
 $route->post('/student/editStudent', 'StudentController@editStudent');
+$route->post('/student/search', 'StudentController@searchStudent');
 
 // Điều hướng của quản lí giáo viên
 $route->get('/teacher', 'TeacherController@index');

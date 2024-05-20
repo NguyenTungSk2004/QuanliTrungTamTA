@@ -83,6 +83,22 @@ class StudentController {
         }
         header('location: ../student');
     }
+
+
+    public function searchStudent(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $search = $_POST['search'];
+            $this->db->logToConsole($search);
+            try{
+                $listStudent = $this->db->table('students')->search(['student_id'], $search);
+                $this->db->logToConsole($listStudent);
+            }catch(PDOException $e){
+                $this->db->logToConsole('Lỗi tìm kiếm dữ liệu student: ' . $e->getMessage());
+            }
+        }
+        // header('location: ../student');
+        include './app/View/Student/student.php';
+    }
     
 }
 ?>

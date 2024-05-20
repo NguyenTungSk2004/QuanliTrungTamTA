@@ -5,7 +5,9 @@ $current_page = explode('/', $current_page);
 $current_page = array_filter($current_page); // Loại bỏ các phần tử rỗng
 $current_page = end($current_page);
 ?>
-
+<!-- Css Sidebar -->
+<link rel="stylesheet" href=".\public\css\sidebar.css">
+<link rel="stylesheet" href="..\public\css\sidebar.css">
 <!-- Sidebar -->
 <div class="sidebar">
   <ul class="navbar-nav">

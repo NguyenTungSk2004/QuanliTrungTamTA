@@ -6,9 +6,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Thanh tìm kiếm -->
-    <form class="form-inline my-2 my-lg-0 mx-auto">
+    <?php
+      $url = $_SERVER['REQUEST_URI'];
+      $url = explode('/', $url);
+      $url= $url[count($url)-1];
+      $url .= '/search';
+    ?>
+    <form class="form-inline my-2 my-lg-0 mx-auto" action="/QuanLiTrungTamTA/<?php echo $url?>" method="POST">
       <div class="input-group">
-        <input type="text" class="form-control rounded-pill border-0 flex-grow-1" style="width: 30em;" placeholder="Tìm kiếm" aria-label="Search" aria-describedby="search-addon">
+        <input type="text" class="form-control rounded-pill border-0 flex-grow-1" style="width: 30em;" placeholder="Tìm kiếm" aria-label="Search" aria-describedby="search-addon" name="search">
         <div class="input-group-append">
           <button class="btn btn-outline-light rounded-pill" type="submit" id="search-addon">
             <i class="fa fa-search"></i>
@@ -28,7 +34,7 @@
             <a class="dropdown-item" href="#">Hồ Sơ</a>
             <a class="dropdown-item" href="#">Cài đặt chung</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="./">Đăng xuất</a>
+            <a class="dropdown-item" href="/QuanLiTrungTamTA/logout">Đăng xuất</a>
           </div>
         </li>
       </ul>

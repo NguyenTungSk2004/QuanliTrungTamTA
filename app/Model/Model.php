@@ -50,6 +50,19 @@ class Database {
         }
     }
 
+    public function search($column=[], $search){
+        try{   
+            $stmt = join(' like ? or ', $column);
+            $stmt .= ' like ?';
+            $sqlString = "select * from $this->table where $stmt ";
+            $query = $this->conn->prepare($sqlString);
+            $query->execute(array_fill(0, count($column), "%$search%"));
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }catch (PDOException $e){
+            $this->logToConsole("Lỗi tìm kiếm dữ liệu: " . $e->getMessage());
+        }
+    }
+
     public function update($data = [], $key, $value){
         try{
             $stmt = join('=?, ', array_keys($data));
