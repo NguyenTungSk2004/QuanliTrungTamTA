@@ -16,11 +16,23 @@ class CourseController{
     }
 
     /**
-     * Display the list of courses.
+     * Hiển thị danh sách các khóa học.
      */
     public function index(){
+        $checkSearch = false;
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
+            if(isset($_GET['search']) && !empty($_GET['search'])){
+                $search = $_GET['search'];
+                $checkSearch = true;
+            }
+        }
         try{
-            $listCourse = $this->db->table('course')->get();
+            // Dữ liệu hiển thị danh sách khóa học
+            if($checkSearch){
+                $listCourse = $this->db->table('course')->search(['course_id','title', 'description', 'duration'], $search);
+            }else{
+               $listCourse = $this->db->table('course')->get();
+            }
         }catch(PDOException $e){
             $this->db->logToConsole('lỗi lấy dữ liệu cho trang course: ' . $e->getMessage());
         }
@@ -28,21 +40,29 @@ class CourseController{
     }
 
     /**
-     * Display the details of a specific course.
+     * Hiển thị chi tiết của một khóa học cụ thể.
      * 
-     * @param string $param The parameter passed in the URL.
+     * @param string $param Tham số được truyền trong URL.
      */
     public function show($param){
         if(isset($_GET['course_id'])){
-            $course_id = $_GET['course_id'];
+            $course_id = $_GET['course_id']; //lấy course_id hiển thị ở url
             try{
+                // Dữ liệu hiển thị thông tin chi tiết của khóa học
                 $course = $this->db->table('course')->get(['course_id' => $course_id]);
                 $course = $course[0];
 
-                $schedules = $this->db->table('schedules')->get(['course_id' => $course_id]);
-
+                // Dữ liệu hiển thị lịch trình trong detailCourse
+                if(isset($_GET['search']) && !empty($_GET['search'])){
+                    $search = $_GET['search'];
+                    $schedules = $this->db->table('schedules')->SearchJoinTable(['course' => 'course_id', 'teachers' => 'teacher_id'], ['schedule_id','name', 'day_of_week', 'start_time', 'end_time'], $search);
+                }else{
+                    $schedules = $this->db->table('schedules')->JoinTable(['course' => 'course_id', 'teachers' => 'teacher_id'], ['schedule_id' => $course_id]);
+                }
+                
+                // Dữ liệu hiển thị teachers trong addSchedule
                 $teachers = $this->db->table('teachers')->get();
-                $this->db->logToConsole($teachers);
+                
                 $path = './app/View/Course/' . $param;
                 if (file_exists($path)) {
                     include $path;
@@ -56,7 +76,7 @@ class CourseController{
     }
 
     /**
-     * Add a new course to the database.
+     * Thêm một khóa học mới vào cơ sở dữ liệu.
      */
     public function addCourse(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -67,7 +87,7 @@ class CourseController{
             $start_date = $_POST['start_date'];
             $end_date = $_POST['end_date'];
 
-            $img = 'public/img/default.jpg'; // Set a default value for the image
+            $img = 'public/img/default.jpg'; // Đặt giá trị mặc định cho hình ảnh
 
             if($_POST['imageSource'] == 'url'){
                 if(isset($_POST['imageURL']) && !empty($_POST['imageURL'])){
@@ -104,7 +124,7 @@ class CourseController{
     }
     
     /**
-     * Delete a course from the database.
+     * Xóa một khóa học khỏi cơ sở dữ liệu.
      */
     public function deleteCourse(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -118,6 +138,9 @@ class CourseController{
         header('location: /QuanLiTrungTamTA/course');
     }
 
+    /**
+     * Chỉnh sửa thông tin của một khóa học.
+     */
     public function editCourse(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $course_id = $_POST['course_id'];
@@ -127,6 +150,7 @@ class CourseController{
             $start_date = $_POST['start_date'];
             $end_date = $_POST['end_date'];
 
+            // Kiểm tra người dùng sử dụng url hay upload hình ảnh và xử lí
             if($_POST['imageSource'] == 'url'){
                 if(isset($_POST['imageURL']) && !empty($_POST['imageURL'])){
                     $img = $_POST['imageURL'];

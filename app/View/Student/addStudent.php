@@ -13,27 +13,26 @@
         <form action="./student/addStudent" method="POST">
           <div class="form-group">
             <label for="name">Tên:</label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name" required>
           </div>
           <div class="form-group">
             <label for="address">Địa chỉ:</label>
-            <input type="text" class="form-control" name="address">
+            <input type="text" class="form-control" name="address" required>
           </div>
           <div class="form-group">
             <label for="phone">Số điện thoại:</label>
-            <input type="text" class="form-control" name="phone">
+            <input type="text" class="form-control" name="phone" required>
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" name="email">
+            <input type="email" class="form-control" name="email" required>
           </div>
           <div class="form-group">
             <label for="idCourse">Khóa học:</label>
-            <select name="idCourse" id="idCourse" class="form-control" multiple>
-                <option value="pro">Tiếng anh pro</option>
-                <option value="basic">Tiếng anh basic</option>
-                <option value="speaking">Tiếng anh speaking</option>
-                <option value="listening">Tiếng anh listening</option>
+            <select name="idCourse[]" id="idCourse" class="form-control" multiple required>
+              <?php foreach($schedules as $schedule):?>
+                <option value="<?php echo $schedule['schedule_id']?>"><?php echo $schedule['title']. ' - '.$schedule['schedule_id']?></option>
+              <?php endforeach;?>
             </select>
           </div>
           <!-- Thêm các trường thông tin khác cần chỉnh sửa -->

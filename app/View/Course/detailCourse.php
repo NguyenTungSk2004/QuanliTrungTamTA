@@ -61,7 +61,12 @@
               </tr>
           </thead>
           <tbody>
-            <?php foreach($schedules as $key => $schedule):?>
+            <?php 
+                foreach($schedules as $key => $schedule):
+                  $studentInclass= $this->db->table('registrations')->JoinTable(['students' => 'student_id'],['schedule_id' => $schedule['schedule_id']]);
+                  $count = count($studentInclass);
+                  $studentInclassJson = json_encode($studentInclass); // Chuyển mảng thành chuỗi JSON
+              ?>
               <!-- form delete schedule -->
               <form 
                     action="/QuanLiTrungTamTA/course/deleteSchedule" 
@@ -76,7 +81,7 @@
                 <input 
                     type="hidden"  
                     name="course_id" 
-                    value="<?php echo $course['course_id']?>"
+                    value="<?php echo $schedule['course_id']?>"
                 >
               </form>
               <!-- end form delete schedule -->
@@ -84,6 +89,13 @@
                     class="table-row-hover" 
                     data-toggle="modal" 
                     data-target="#detailSchedule"
+                    data-name="<?php echo $schedule['name'];?>"
+                    data-email="<?php echo $schedule['email'];?>"
+                    data-day_of_week="<?php echo $schedule['day_of_week'];?>"
+                    data-start_time="<?php echo $schedule['start_time'];?>"
+                    data-end_time="<?php echo $schedule['end_time'];?>"
+                    data-count="<?php echo $count;?>"
+                    data-studentInclass='<?php echo htmlspecialchars($studentInclassJson, ENT_QUOTES, 'UTF-8'); ?>'
                 >
                   <td scope="row">
                     <?php echo $key+1?>
@@ -92,16 +104,7 @@
                     <?php echo $schedule['schedule_id']?>
                   </td>
                   <td>
-                    <?php
-                    $teacher_name = $this->db->table('teachers')->get(['teacher_id' =>$schedule['teacher_id']])[0]['name'];
-                    if(isset($teacher_name)) {
-                      echo $teacher_name;
-                    } else {
-                      echo "chưa cập nhật";
-                      $stmt = "deleteSchedule".$schedule['schedule_id'];
-                      echo "<script>document.getElementById('$stmt').submit();</script>";
-                    }
-                    ?>
+                    <?php echo $schedule['name'];?>
                   </td>
                   <td>
                     <?php echo $schedule['day_of_week']?>
@@ -151,5 +154,6 @@
 
 <!-- include style and animation -->
 <script src="../public/js/Course.js"></script>
+<script src="../public/js/Schedules.js"></script> 
 </body>
 </html>

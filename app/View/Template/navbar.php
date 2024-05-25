@@ -8,12 +8,11 @@
     <!-- Thanh tìm kiếm -->
     <?php
       $url = $_SERVER['REQUEST_URI'];
-      $url = explode('/', $url);
-      $url= $url[count($url)-1];
-      $url .= '/search';
+      $url = parse_url($url, PHP_URL_PATH); // xóa phần http://example.com/
     ?>
-    <form class="form-inline my-2 my-lg-0 mx-auto" action="/QuanLiTrungTamTA/<?php echo $url?>" method="POST">
+    <form class="form-inline my-2 my-lg-0 mx-auto" action="<?php echo $url?>" method="GET">
       <div class="input-group">
+        <input type="hidden" name="course_id" value="<?php echo isset($_GET['course_id'])?$_GET['course_id']:'';?>">
         <input type="text" class="form-control rounded-pill border-0 flex-grow-1" style="width: 30em;" placeholder="Tìm kiếm" aria-label="Search" aria-describedby="search-addon" name="search">
         <div class="input-group-append">
           <button class="btn btn-outline-light rounded-pill" type="submit" id="search-addon">

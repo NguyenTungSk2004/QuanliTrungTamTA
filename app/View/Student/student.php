@@ -37,7 +37,7 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">STT</th>
+            <th scope="col">Mã</th>
             <th scope="col">Tên</th>
             <th scope="col">Địa chỉ</th>
             <th scope="col">Số điện thoại</th>

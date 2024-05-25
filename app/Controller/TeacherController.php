@@ -13,8 +13,20 @@ class TeacherController {
         $this->db = new Database($this->config);
     }
     public function index(){
+        $checkSearch = false;
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
+            if(isset($_GET['search']) && !empty($_GET['search'])){
+                $search = $_GET['search'];
+                $checkSearch = true;
+            }
+        }
         try {
-            $listteacher = $this->db->table('teachers')->get();
+            //Dữ liệu hiển thị danh sách teachers
+            if($checkSearch){
+                $listteacher = $this->db->table('teachers')->search(['teacher_id','name', 'address', 'phone', 'email'], $search);
+            }else{
+                $listteacher = $this->db->table('teachers')->get();
+            }
         } catch (PDOException $e) {
             $this->db->logToConsole('lỗi lấy dữ liệu cho trang teacher: ' . $e->getMessage());
         }

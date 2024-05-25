@@ -10,26 +10,26 @@
       </div>
       <div class="modal-body">
         <!-- Form thêm giáo viên  -->
-        <form action="./teacher/addTeacher" method="POST">
+        <form action="/QuanLiTrungTamTA/teacher/addTeacher" method="POST">
 
           <div class="form-group">
             <label for="name">Tên:</label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name" required> 
           </div>
 
           <div class="form-group">
             <label for="address">Địa chỉ:</label>
-            <input type="text" class="form-control" name="address">
+            <input type="text" class="form-control" name="address" required>
           </div>
 
           <div class="form-group">
             <label for="phone">Số điện thoại:</label>
-            <input type="text" class="form-control" name="phone">
+            <input type="text" class="form-control" name="phone" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" name="email">
+            <input type="email" class="form-control" name="email" required>
           </div>
 
           <!-- Thêm các trường thông tin khác cần chỉnh sửa -->

@@ -24,24 +24,26 @@ $route->get('/home', 'HomeController@index');
 
 // Điều hướng của quản lí học viên
 $route->get('/student', 'StudentController@index');
-$route->post('/student/addStudent', 'StudentController@addStudent');
 $route->post('/student/deleteStudent', 'StudentController@deleteStudent');
 $route->post('/student/editStudent', 'StudentController@editStudent');
-$route->post('/student/search', 'StudentController@searchStudent');
+
+// Điều hướng của quản lí đăng kí học viên
+$route->post('/student/addStudent', 'RegistrationController@addStudent');
 
 // Điều hướng của quản lí giáo viên
 $route->get('/teacher', 'TeacherController@index');
-$route->get('/teacher/addTeacher', 'TeacherController@addTeacher');
-$route->get('/teacher/editTeacher', 'TeacherController@editTeacher');
-$route->get('/teacher/deleteTeacher', 'TeacherController@deleteTeacher');
+$route->post('/teacher/addTeacher', 'TeacherController@addTeacher');
+$route->post('/teacher/editTeacher', 'TeacherController@editTeacher');
+$route->post('/teacher/deleteTeacher', 'TeacherController@deleteTeacher');
 
 // Điều hướng của quản lí khóa học
 $route->get('/course', 'CourseController@index');
-$route->get('/course/detail', 'CourseController@show@detailCourse.php');
 $route->post('/course/addCourse', 'CourseController@addCourse');
 $route->post('/course/deleteCourse', 'CourseController@deleteCourse');
 $route->post('/course/edit', 'CourseController@editCourse');
+
 //Điều hướng của quản lí lịch trình
+$route->get('/course/detail', 'CourseController@show@detailCourse.php');
 $route->post('/course/addSchedule', 'ScheduleController@addSchedule');
 $route->post('/course/deleteSchedule', 'ScheduleController@deleteSchedule');
 
