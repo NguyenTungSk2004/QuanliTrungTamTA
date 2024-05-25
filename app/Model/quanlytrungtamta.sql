@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 06:54 PM
+-- Generation Time: May 25, 2024 at 10:03 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,11 +42,30 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `title`, `description`, `duration`, `start_date`, `end_date`, `img`) VALUES
-('BASIC', 'Tiếng anh cơ bản 1', ' Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0', 3, '2024-05-01', '2024-05-31', 'https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg'),
-('hahaha', 'Khóa học ảo ma  ', '    Xem video bài giảng youtube của các anh Ấn Độ không hề khó khăn sau khi học xong khóa học này', 3, '2024-04-29', '2024-05-28', 'https://th.bing.com/th/id/OIP.jAfEStIV4bbWs1gpPZNp2wHaDp?rs=1&pid=ImgDetMain'),
-('HELLO', 'Hello World', '          bạn sẽ biết hello worlddd', 4, '2024-05-23', '2024-05-29', 'public/img/R.jpg'),
-('PRO', 'Khóa học tiếng anh nâng cao', 'Cải thiện trình độ tiếng anh của bạn chỉ trong 6 tháng cùng các chuyên gia đến từ ấn độ', 6, '2024-05-01', '2024-05-31', 'https://imgk.timesnownews.com/story/english.png'),
-('Profesionn', 'Khóa học vippro', ' Khóa học do Nguyễn Tùng Sk phụ trách giảng dạy sẽ đưa bạn đến một tầm cao mới trong công cuộc học hỏi một loại ngoại ngữ mới ', 4, '2024-05-20', '2024-06-08', 'public/img/default.jpg');
+('BASIC', 'Tiếng anh cơ bản', 'Khóa học giúp bạn nâng cao khá năng ngoại ngữ chỉ sau 3 tháng', 3, '2024-05-01', '2024-05-03', 'https://th.bing.com/th/id/OIP.rzKmLbDrL_jFDjrS2Lni9gHaEK?rs=1&pid=ImgDetMain'),
+('PRO', 'Khóa học tiếng anh nâng cao', 'Cải thiện trình độ tiếng anh của bạn chỉ trong 6 tháng cùng các chuyên gia đến từ ấn độ', 6, '2024-05-01', '2024-05-31', 'https://imgk.timesnownews.com/story/english.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `registrations`
+--
+
+CREATE TABLE `registrations` (
+  `registration_id` varchar(4) NOT NULL,
+  `student_id` varchar(4) NOT NULL,
+  `schedule_id` varchar(32) NOT NULL,
+  `registration_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `registrations`
+--
+
+INSERT INTO `registrations` (`registration_id`, `student_id`, `schedule_id`, `registration_date`) VALUES
+('DK50', 'HV45', 'BASIC73', '2024-05-25 07:36:39'),
+('DK53', 'HV45', 'BASIC29', '2024-05-25 07:36:39'),
+('DK58', 'HV45', 'BASIC89', '2024-05-25 07:36:39');
 
 -- --------------------------------------------------------
 
@@ -68,9 +87,9 @@ CREATE TABLE `schedules` (
 --
 
 INSERT INTO `schedules` (`schedule_id`, `course_id`, `teacher_id`, `day_of_week`, `start_time`, `end_time`) VALUES
-('BASIC18', 'BASIC', 'GV01', 'monday, sunday', '14:47:00', '16:47:00'),
-('Profesionn08', 'Profesionn', 'GV01', 'monday, tuesday, wednesday', '11:42:00', '23:42:00'),
-('Profesionn09', 'Profesionn', 'GV46', 'monday, tuesday, saturday', '13:47:00', '15:47:00');
+('BASIC29', 'BASIC', 'GV69', 'tuesday, sunday', '16:35:00', '19:35:00'),
+('BASIC73', 'BASIC', 'GV01', 'saturday, sunday', '14:36:00', '16:36:00'),
+('BASIC89', 'BASIC', 'GV01', 'monday, tuesday', '06:35:00', '09:35:00');
 
 -- --------------------------------------------------------
 
@@ -91,10 +110,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `name`, `address`, `phone`, `email`) VALUES
-('HV01', 'Nguyễn Văn Tùng', 'Đại Bản - An Dương - Hải Phòng', '0392604345', 'tung95182@gmail.com'),
-('HV24', 'Nguyễn Tùng Lâm', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'saikornguyen@gmail.com'),
-('HV34', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com'),
-('HV92', 'Nguyễn Hữu dương', 'Hảo Hảo - Chua Cay - Mật Ngọt', '8303139613', '12341234@gmail.com');
+('HV18', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com'),
+('HV45', 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -115,9 +132,8 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`teacher_id`, `name`, `address`, `phone`, `email`) VALUES
-('GV01', 'Nguyễn Hạnh Phúc', 'Hải phòng', '0123456789', 'nguyenhanhphuc@gmail.com'),
-('GV02', 'Lê thế Anh', 'hà nội', '0123456789', 'letheanh@gmail.com'),
-('GV46', 'Phạm Trung Hưng', 'Đại Bản - An Dương - Hải Phòng', '432112341', '1234@gmail.com');
+('GV01', 'Nguyễn Hạnh Phúc', 'Hải phòng -Việt Nam', '0123456789', 'nguyenhanhphuc@gmail.com'),
+('GV69', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -130,12 +146,20 @@ ALTER TABLE `course`
   ADD PRIMARY KEY (`course_id`);
 
 --
+-- Indexes for table `registrations`
+--
+ALTER TABLE `registrations`
+  ADD PRIMARY KEY (`registration_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `schedule_id` (`schedule_id`);
+
+--
 -- Indexes for table `schedules`
 --
 ALTER TABLE `schedules`
   ADD PRIMARY KEY (`schedule_id`),
-  ADD KEY `course_id` (`course_id`),
-  ADD KEY `teacher_id` (`teacher_id`);
+  ADD KEY `schedules_teachers` (`teacher_id`),
+  ADD KEY `schedules_course` (`course_id`);
 
 --
 -- Indexes for table `students`
@@ -154,11 +178,18 @@ ALTER TABLE `teachers`
 --
 
 --
+-- Constraints for table `registrations`
+--
+ALTER TABLE `registrations`
+  ADD CONSTRAINT `registrations_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `registrations_ibfk_2` FOREIGN KEY (`schedule_id`) REFERENCES `schedules` (`schedule_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `schedules`
 --
 ALTER TABLE `schedules`
-  ADD CONSTRAINT `schedules_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
-  ADD CONSTRAINT `schedules_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`);
+  ADD CONSTRAINT `schedules_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedules_teachers` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
