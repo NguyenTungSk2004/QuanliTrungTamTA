@@ -26,8 +26,8 @@
             <label for="">Ngày trong tuần</label>
               <div class="row">
                 <div class="col">
-                    <input type="checkbox" name="day_of_week[]" value="monday">
-                    <label for="monday">Thứ 2</label>
+                  <input type="checkbox" name="day_of_week[]" value="monday" checked>
+                  <label for="monday">Thứ 2</label>
                 </div>
                 <div class="col">
                     <input type="checkbox" name="day_of_week[]" value="tuesday">
@@ -59,19 +59,32 @@
               </div>
           </div>
 
-          <div class="form-group">
-            <label for="start_time">Thời gian bắt đầu</label>
-            <input type="time" class="form-control" name="start_time" placeholder="Thời gian bắt đầu">
-          </div>
+            <div class="form-group">
+              <label for="start_time">Thời gian bắt đầu</label>
+              <input type="time" class="form-control" name="start_time" placeholder="Thời gian bắt đầu" onchange="validateTime()" required>
+            </div>
 
-          <div class="form-group">
-            <label for="end_time">Thời gian kết thúc</label>
-            <input type="time" class="form-control" name="end_time" placeholder="Thời gian kết thúc">
-          </div>
-          
+            <div class="form-group">
+              <label for="end_time">Thời gian kết thúc</label>
+              <input type="time" class="form-control" name="end_time" placeholder="Thời gian kết thúc" onchange="validateTime()" required>
+            </div>
           <button type="submit" class="btn btn-primary">Save</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+<script>
+  function validateTime() {
+    var startTime = document.getElementsByName("start_time")[0].value;
+    var endTime = document.getElementsByName("end_time")[0].value;
+
+    if (startTime >= endTime) {
+      alert("Thời gian kết thúc phải lớn hơn thời gian bắt đầu");
+      document.getElementsByName("end_time")[0].value = "";
+      return false; // Prevent form submission
+    }
+
+    return true; // Allow form submission
+  }
+</script>

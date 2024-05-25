@@ -47,58 +47,86 @@
         </thead>
         <tbody>
             <?php if (!empty($listStudent)): ?>
-              <?php foreach($listStudent as $student): ?>
+              <?php 
+                  foreach($listStudent as $student):
+                    // Danh sách các khóa học học viên đã đăng ký
+                    $listRegistration = $this->db->table('registrations')->JoinTable(['schedules'=>'schedule_id'],['student_id'=>$student['student_id']]);
+
+                    // Tạo data truyền với thông tin đăng ký, schedule, course
+                    $data_registration = [];
+                    foreach($listRegistration as $registration){
+                        $tmp = $this->db->table('schedules')->JoinTable(['course'=>'course_id'],['schedule_id'=>$registration['schedule_id']]);
+                        
+                        // Kết hợp thông tin từ $tmp và $registration thành một đối tượng
+                        $merged_data = array_merge($tmp[0], $registration);
+                        
+                        // Thêm đối tượng mới vào mảng $data_registration
+                        $data_registration[] = $merged_data;
+                    }
+                    $data_registration = json_encode($data_registration); // Chuyển mảng thành chuỗi JSON
+                    // Sử dụng dữ liệu $data_registration ở đây hoặc gửi nó đến client
+                ?>
                 <tr class="table-row-hover">
-                  <th scope="row"
+                    <th scope="row"
                       data-toggle="modal"   
                       data-target="#detailStudent"
                       data-name="<?php echo $student['name']?>"
                       data-address="<?php echo $student['address']?>"
                       data-phone="<?php echo $student['phone']?>"
-                      data-email="<?php echo $student['email']?>"                  
-                  >
+                      data-email="<?php echo $student['email']?>"
+                      data-data_registration='<?php echo htmlspecialchars($data_registration, ENT_QUOTES, 'UTF-8'); ?>'
+
+                    >
                     <?php echo $student['student_id']?>
-                  </th>
-                  <td 
+                    </th>
+                    <td 
                       data-toggle="modal"     
                       data-target="#detailStudent"
                       data-name="<?php echo $student['name']?>"
                       data-address="<?php echo $student['address']?>"
                       data-phone="<?php echo $student['phone']?>"
-                      data-email="<?php echo $student['email']?>"  
-                  >
+                      data-email="<?php echo $student['email']?>"
+                      data-data_registration='<?php echo htmlspecialchars($data_registration, ENT_QUOTES, 'UTF-8'); ?>'
+
+                    >
                     <?php echo $student['name']?>
-                  </td>
-                  <td
+                    </td>
+                    <td
                       data-toggle="modal"   
                       data-target="#detailStudent"
                       data-name="<?php echo $student['name']?>"
                       data-address="<?php echo $student['address']?>"
                       data-phone="<?php echo $student['phone']?>"
-                      data-email="<?php echo $student['email']?>"  
-                  >
+                      data-email="<?php echo $student['email']?>"
+                      data-data_registration='<?php echo htmlspecialchars($data_registration, ENT_QUOTES, 'UTF-8'); ?>'
+
+                    >
                     <?php echo $student['address']?>
-                  </td>
-                  <td
+                    </td>
+                    <td
                       data-toggle="modal"   
                       data-target="#detailStudent"
                       data-name="<?php echo $student['name']?>"
                       data-address="<?php echo $student['address']?>"
                       data-phone="<?php echo $student['phone']?>"
-                      data-email="<?php echo $student['email']?>"  
-                  >
+                      data-email="<?php echo $student['email']?>"
+                      data-data_registration='<?php echo htmlspecialchars($data_registration, ENT_QUOTES, 'UTF-8'); ?>'
+
+                    >
                     <?php echo $student['phone']?>
-                  </td>
-                  <td
+                    </td>
+                    <td
                       data-toggle="modal"   
                       data-target="#detailStudent"
                       data-name="<?php echo $student['name']?>"
                       data-address="<?php echo $student['address']?>"
                       data-phone="<?php echo $student['phone']?>"
-                      data-email="<?php echo $student['email']?>"  
-                  >
+                      data-email="<?php echo $student['email']?>"
+                      data-data_registration='<?php echo htmlspecialchars($data_registration, ENT_QUOTES, 'UTF-8'); ?>'
+
+                    >
                     <?php echo $student['email']?>
-                  </td>
+                    </td>
                   <td>
                     <div class="d-inline">
                         <a type="button" 

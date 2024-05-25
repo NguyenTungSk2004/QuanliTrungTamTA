@@ -20,7 +20,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">STT</th>
+              <th scope="col">Mã lớp</th>
               <th scope="col">Tên khóa học</th>
               <th scope="col">Thời lượng</th>
               <!-- Thêm các cột khác tùy ý -->
@@ -31,11 +31,6 @@
               <th scope="row">1</th>
               <td><a href="#" data-toggle="modal" data-target="#paymentStudent">Khóa học Tiếng Anh cơ bản</a></td>
               <td>3 tháng</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td><a href="#" data-toggle="modal" data-target="#paymentStudent">Khóa học Tiếng Anh nâng cao</a></td>
-              <td>6 tháng</td>
             </tr>
           </tbody>
         </table>

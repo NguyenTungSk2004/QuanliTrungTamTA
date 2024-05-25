@@ -30,7 +30,7 @@ class StudentController {
             }else{
                 $listStudent = $this->db->table('students')->get();
             }
-            
+
             // Dữ liệu hiển thị khóa học trong addStudent
             $schedules = $this->db->table('schedules')->JoinTable(['course'=>'course_id']);
         } catch (PDOException $e) {

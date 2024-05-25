@@ -120,7 +120,7 @@
                     <a 
                         type="button" 
                         class="btn btn-sm btn-danger" 
-                        onclick="document.getElementById('deleteSchedule<?php echo $schedule['schedule_id']?>').submit();"
+                        onclick="deleteSchedule('deleteSchedule<?php echo $schedule['schedule_id']?>');"
                     >
                         <i class="fas fa-trash"></i> Xóa
                     </a>

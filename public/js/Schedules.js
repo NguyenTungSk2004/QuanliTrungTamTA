@@ -33,3 +33,11 @@ $(document).ready(function() {
         });
     });
 });
+
+
+function deleteSchedule(id) {
+    if (confirm('Bạn có chắc chắn muốn xóa lớp học này không?')) {
+        event.stopPropagation();
+        document.getElementById(id).submit();
+    }
+  }
