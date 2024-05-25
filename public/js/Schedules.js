@@ -22,8 +22,10 @@ $(document).ready(function() {
         tableBody.empty(); // Xóa dữ liệu cũ
 
         // Thêm dữ liệu sinh viên vào tbody
+        var count = 0;
         studentInclass.forEach(function(student) {
             var row = '<tr>' +
+                '<td>' + ++count + '</td>' +
                 '<td>' + student.student_id + '</td>' +
                 '<td>' + student.name + '</td>' +
                 '<td>' + student.phone + '</td>' +

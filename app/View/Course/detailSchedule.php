@@ -24,6 +24,7 @@
             <table class="table">
                 <thead>
                   <tr>
+                    <th>STT</th>
                     <th>Mã</th>
                     <th>Tên</th>
                     <th>SĐT</th>
