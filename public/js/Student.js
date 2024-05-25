@@ -60,13 +60,12 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#paymentStudent').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Nút kích hoạt modal
-      var data = button.data('registration'); // Đây đã là một đối tượng JavaScript, không cần chuyển đổi
+      var data = button.data('registration'); 
 
       var modal = $(this);
       modal.find('.modal-body #studentName').val(data.name);
       modal.find('.modal-body #courseName').val(data.title);
       modal.find('.modal-body #registrationInfo').val("Mã đăng ký: " + data.registration_id + "\n" + "Mã lớp học: " + data.schedule_id + "\nThời lượng: " + data.duration + " tháng" +"\nNgày đăng ký: " + data.registration_date);
-      // Sử dụng các giá trị lấy được ở trên để làm gì đó trong modal
   });
 });
 

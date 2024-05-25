@@ -27,13 +27,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td><a href="#">Khóa học Tiếng Anh cơ bản</a></td>
-              <td>3 tháng</td>
-              <!-- Thêm các cột khác tùy ý -->
-            </tr>
-            
+                      <!--Thêm các danh sách các khóa học tại đây  -->
           </tbody>
         </table>
       </div>

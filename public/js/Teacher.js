@@ -26,12 +26,25 @@ $(document).ready(function() {
         var address = button.data('address');
         var phone = button.data('phone');
         var email = button.data('email');
+        var listCourse = button.data('listcourse');
 
         var modal = $(this);
         modal.find('.modal-body p:nth-child(1)').html('<b>Tên:</b> ' + name);
         modal.find('.modal-body p:nth-child(2)').html('<b>Địa chỉ:</b> ' + address);
         modal.find('.modal-body p:nth-child(3)').html('<b>Số điện thoại:</b> ' + phone);
         modal.find('.modal-body p:nth-child(4)').html('<b>Email:</b> ' + email);
+
+        var count = 0;
+        const tbody = modal.find('.modal-body table tbody');
+        tbody.empty(); //xóa tbody cũ
+        listCourse.forEach((course)=>{
+          var bodyContent = "<tr>";
+          bodyContent += "<th scope='row'>" + ++count + "</th>";
+          bodyContent += "<td><a href='/QuanLiTrungTamTA/course/detail?course_id=" + course.course_id + "'>" + course.title + "</a></td>";
+          bodyContent += "<td>" + course.duration + " Tháng</td>";
+          bodyContent += "</tr>";
+          tbody.append(bodyContent);
+        });
     });
 });
 

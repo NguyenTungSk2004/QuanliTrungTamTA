@@ -33,6 +33,15 @@ class TeacherController {
         include './app/View/Teacher/teacher.php';
     }
 
+    public function getListCourse($teacher){
+        $sql = "SELECT DISTINCT c.course_id, c.title, c.duration 
+        FROM schedules s
+        JOIN course c ON s.course_id = c.course_id
+        WHERE s.teacher_id = '{$teacher['teacher_id']}'";
+        $listCourse = $this->db->query($sql);
+        return $listCourse;
+    }
+
     public function addTeacher(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];

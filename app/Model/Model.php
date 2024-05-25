@@ -48,6 +48,16 @@ class Database {
         }
     }
 
+    public function query($sql){
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            $this->logToConsole("Lỗi truy vấn dữ liệu: " . $e->getMessage());
+        }
+    }
+
     /**
      * Lấy các bản ghi từ bảng đã chỉ định.
      * 

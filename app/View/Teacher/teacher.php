@@ -37,7 +37,12 @@
         </thead>
         <tbody>
             <?php if (!empty($listteacher)): ?>
-              <?php foreach($listteacher as $teacher): ?>
+              <?php 
+                  foreach($listteacher as $teacher): 
+                    $listCourse = $this->getListCourse($teacher);
+                    $listCourse = json_encode($listCourse);
+                    $this->db->logToConsole($listCourse);
+              ?>
                 <tr class="table-row-hover">
                   <th scope="row"
                       data-toggle="modal"   
@@ -45,7 +50,8 @@
                       data-name="<?php echo $teacher['name']?>"
                       data-address="<?php echo $teacher['address']?>"
                       data-phone="<?php echo $teacher['phone']?>"
-                      data-email="<?php echo $teacher['email']?>"                  
+                      data-email="<?php echo $teacher['email']?>"       
+                      data-listcourse='<?php echo htmlspecialchars($listCourse, ENT_QUOTES, 'UTF-8'); ?>'
                   >
                     <?php echo $teacher['teacher_id']?>
                   </th>
@@ -56,6 +62,7 @@
                       data-address="<?php echo $teacher['address']?>"
                       data-phone="<?php echo $teacher['phone']?>"
                       data-email="<?php echo $teacher['email']?>"  
+                      data-listcourse='<?php echo htmlspecialchars($listCourse, ENT_QUOTES, 'UTF-8'); ?>'
                   >
                     <?php echo $teacher['name']?>
                   </td>
@@ -66,6 +73,7 @@
                       data-address="<?php echo $teacher['address']?>"
                       data-phone="<?php echo $teacher['phone']?>"
                       data-email="<?php echo $teacher['email']?>"  
+                      data-listcourse='<?php echo htmlspecialchars($listCourse, ENT_QUOTES, 'UTF-8'); ?>'
                   >
                     <?php echo $teacher['address']?>
                   </td>
@@ -76,6 +84,7 @@
                       data-address="<?php echo $teacher['address']?>"
                       data-phone="<?php echo $teacher['phone']?>"
                       data-email="<?php echo $teacher['email']?>"  
+                      data-listcourse='<?php echo htmlspecialchars($listCourse, ENT_QUOTES, 'UTF-8'); ?>'
                   >
                     <?php echo $teacher['phone']?>
                   </td>
@@ -86,6 +95,7 @@
                       data-address="<?php echo $teacher['address']?>"
                       data-phone="<?php echo $teacher['phone']?>"
                       data-email="<?php echo $teacher['email']?>"  
+                      data-listcourse='<?php echo htmlspecialchars($listCourse, ENT_QUOTES, 'UTF-8'); ?>'
                   >
                     <?php echo $teacher['email']?>
                   </td>
