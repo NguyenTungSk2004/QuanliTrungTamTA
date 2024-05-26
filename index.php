@@ -49,6 +49,7 @@ $route->post('/course/deleteSchedule', 'ScheduleController@deleteSchedule');
 
 // Điều hướng của quản lí thanh toán
 $route->get('/payment', 'PaymentController@index');
+$route->get('/payment/phieuthu', 'PaymentController@index');
 
 // Điều hướng của quản lí kết quả học tập
 $route->get('/achievement', 'AchievementController@index');

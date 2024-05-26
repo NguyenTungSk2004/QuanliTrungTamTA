@@ -29,7 +29,7 @@ class Route {
             $controller = new $controllerName();
 
             if(!isset($param))
-                $controller->$action($param);
+                $controller->$action();
             else{
                 $controller->$action($param);
             }
