@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *  Đang ở nhánh kien
  * Hướng dẫn sử dụng 
  * hàm get: $route->get('/Your_Url','class_Controller@method@param');
  * hàm post: $route->post('/Your_Url','class_Controller@method@param');
