@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2024 at 10:03 AM
+-- Generation Time: May 26, 2024 at 03:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,9 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `title`, `description`, `duration`, `start_date`, `end_date`, `img`) VALUES
-('BASIC', 'Tiếng anh cơ bản', 'Khóa học giúp bạn nâng cao khá năng ngoại ngữ chỉ sau 3 tháng', 3, '2024-05-01', '2024-05-03', 'https://th.bing.com/th/id/OIP.rzKmLbDrL_jFDjrS2Lni9gHaEK?rs=1&pid=ImgDetMain'),
+('BASIC', 'Tiếng anh cơ bản 1', '  Khóa học giúp bạn nâng cao khá năng ngoại ngữ chỉ sau 3 tháng', 3, '2024-05-01', '2024-05-03', 'https://th.bing.com/th/id/OIP.rzKmLbDrL_jFDjrS2Lni9gHaEK?rs=1&pid=ImgDetMain'),
+('LEARN', 'Tiếng anh cho người mới bắt đầu', 'Tiếng anh giao tiếp cơ bản giúp người học có thể giao tiếp cơ bản sau 2 tháng', 2, '2024-05-03', '2024-05-05', 'https://th.bing.com/th/id/OIP.k5sHBKdRWU_iCgK78k85NgHaDw?rs=1&pid=ImgDetMain'),
+('MIDDLE', 'Tiếng anh là tôi', 'Khóa học truyền tải đam mê và niềm yêu thích tiếng anh đến mọi người, lan tỏa sức sống', 4, '2024-05-17', '2024-05-24', 'https://th.bing.com/th/id/R.d77c69508141d6d0b106391e3fdddce8?rik=Xd4E2A%2fwmTGsIg&riu=http%3a%2f%2fdanview.net%2fwp-content%2fuploads%2f2017%2f08%2fEnglish1-1024x690.jpg&ehk=hjIyPQZ0UmNAymSUc8gGNqinZrrkQMrIQR%2fCLkQef5U%3d&risl=&pid=ImgRaw&r=0'),
 ('PRO', 'Khóa học tiếng anh nâng cao', 'Cải thiện trình độ tiếng anh của bạn chỉ trong 6 tháng cùng các chuyên gia đến từ ấn độ', 6, '2024-05-01', '2024-05-31', 'https://imgk.timesnownews.com/story/english.png');
 
 -- --------------------------------------------------------
@@ -63,9 +65,11 @@ CREATE TABLE `registrations` (
 --
 
 INSERT INTO `registrations` (`registration_id`, `student_id`, `schedule_id`, `registration_date`) VALUES
-('DK50', 'HV45', 'BASIC73', '2024-05-25 07:36:39'),
+('DK07', 'HV73', 'MIDDLE75', '2024-05-25 15:00:49'),
+('DK14', 'HV73', 'PRO36', '2024-05-25 15:00:49'),
+('DK30', 'HV73', 'LEARN52', '2024-05-25 15:00:49'),
 ('DK53', 'HV45', 'BASIC29', '2024-05-25 07:36:39'),
-('DK58', 'HV45', 'BASIC89', '2024-05-25 07:36:39');
+('DK99', 'HV73', 'BASIC04', '2024-05-25 15:00:49');
 
 -- --------------------------------------------------------
 
@@ -87,9 +91,13 @@ CREATE TABLE `schedules` (
 --
 
 INSERT INTO `schedules` (`schedule_id`, `course_id`, `teacher_id`, `day_of_week`, `start_time`, `end_time`) VALUES
+('BASIC04', 'BASIC', 'GV01', 'monday', '17:21:00', '19:21:00'),
 ('BASIC29', 'BASIC', 'GV69', 'tuesday, sunday', '16:35:00', '19:35:00'),
-('BASIC73', 'BASIC', 'GV01', 'saturday, sunday', '14:36:00', '16:36:00'),
-('BASIC89', 'BASIC', 'GV01', 'monday, tuesday', '06:35:00', '09:35:00');
+('BASIC43', 'BASIC', 'GV01', 'monday', '22:26:00', '21:26:00'),
+('LEARN52', 'LEARN', 'GV10', 'monday, tuesday, wednesday', '13:00:00', '17:00:00'),
+('MIDDLE58', 'MIDDLE', 'GV69', 'monday, sunday', '08:59:00', '10:59:00'),
+('MIDDLE75', 'MIDDLE', 'GV01', 'monday, tuesday, wednesday', '14:59:00', '16:59:00'),
+('PRO36', 'PRO', 'GV01', 'monday, saturday', '21:46:00', '23:42:00');
 
 -- --------------------------------------------------------
 
@@ -110,8 +118,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `name`, `address`, `phone`, `email`) VALUES
-('HV18', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com'),
-('HV45', 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com');
+('HV45', 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604344', 'nguyentungsk2004@gmail.com'),
+('HV73', 'Phạm Trung Hưng', 'Đại Bản - An Dương - Hải Phòng', '0312222222', 'phamtrunghung@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -133,6 +141,7 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`teacher_id`, `name`, `address`, `phone`, `email`) VALUES
 ('GV01', 'Nguyễn Hạnh Phúc', 'Hải phòng -Việt Nam', '0123456789', 'nguyenhanhphuc@gmail.com'),
+('GV10', 'Nguyễn Tùng Dường', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0243523451', '12341234@gmail.com'),
 ('GV69', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com');
 
 --
