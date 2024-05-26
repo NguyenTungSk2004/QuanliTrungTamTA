@@ -3,6 +3,7 @@
 class Route {
     private $routes = [];
 
+    
     public function get($url, $controllerAction) {
         $url = '/QuanLiTrungTamTA' . $url;
         $this->routes[$url] = $controllerAction;

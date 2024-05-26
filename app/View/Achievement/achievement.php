@@ -17,6 +17,9 @@
 <div class="main-content">
     <div class="container mt-5">
     <h2>Kết quả học tập</h2>
+
+
+    afhsdlkjfhasdlkjfhaslkdfjh
     </div>
 </div>
 <!-- Bootstrap JS and jQuery -->

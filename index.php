@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * 
+ * Hướng dẫn sử dụng 
+ * hàm get: $route->get('/Your_Url','class_Controller@method@param');
+ * hàm post: $route->post('/Your_Url','class_Controller@method@param');
+ * @param tham số truyền vào (chỉ cho phép 1 tham số truyền vào)
+ * @method phương thức xử lí
+ */
+
 include './app/Model/Model.php';
 include './app/Route/Route.php';
 include './app/Controller/HomeController.php';
