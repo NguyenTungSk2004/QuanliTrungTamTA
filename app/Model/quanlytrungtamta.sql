@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2024 at 05:00 PM
+-- Generation Time: May 26, 2024 at 05:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,6 +47,22 @@ INSERT INTO `course` (`course_id`, `title`, `description`, `duration`, `start_da
 ('LEARN', 'Tiếng anh cho người mới bắt đầu', 'Tiếng anh giao tiếp cơ bản giúp người học có thể giao tiếp cơ bản sau 2 tháng', 2, '2024-05-03', '2024-05-05', 0, 'https://th.bing.com/th/id/OIP.k5sHBKdRWU_iCgK78k85NgHaDw?rs=1&pid=ImgDetMain'),
 ('MIDDLE', 'Tiếng anh là tôi', 'Khóa học truyền tải đam mê và niềm yêu thích tiếng anh đến mọi người, lan tỏa sức sống', 4, '2024-05-17', '2024-05-24', 0, 'https://th.bing.com/th/id/R.d77c69508141d6d0b106391e3fdddce8?rik=Xd4E2A%2fwmTGsIg&riu=http%3a%2f%2fdanview.net%2fwp-content%2fuploads%2f2017%2f08%2fEnglish1-1024x690.jpg&ehk=hjIyPQZ0UmNAymSUc8gGNqinZrrkQMrIQR%2fCLkQef5U%3d&risl=&pid=ImgRaw&r=0'),
 ('PRO', 'Khóa học tiếng anh nâng cao', 'Cải thiện trình độ tiếng anh của bạn chỉ trong 6 tháng cùng các chuyên gia đến từ ấn độ', 6, '2024-05-01', '2024-05-31', 0, 'https://imgk.timesnownews.com/story/english.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `receipt`
+--
+
+CREATE TABLE `receipt` (
+  `receipt_id` varchar(4) NOT NULL,
+  `registration_id` varchar(4) NOT NULL,
+  `amount_received` int(11) NOT NULL CHECK (`amount_received` >= 0),
+  `total_payment` int(11) NOT NULL CHECK (`total_payment` >= 0),
+  `received_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `method` varchar(50) NOT NULL,
+  `note` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -156,6 +172,13 @@ ALTER TABLE `course`
   ADD PRIMARY KEY (`course_id`);
 
 --
+-- Indexes for table `receipt`
+--
+ALTER TABLE `receipt`
+  ADD PRIMARY KEY (`receipt_id`),
+  ADD KEY `registration_id` (`registration_id`);
+
+--
 -- Indexes for table `registrations`
 --
 ALTER TABLE `registrations`
@@ -186,6 +209,12 @@ ALTER TABLE `teachers`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `receipt`
+--
+ALTER TABLE `receipt`
+  ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`registration_id`) REFERENCES `registrations` (`registration_id`);
 
 --
 -- Constraints for table `registrations`
