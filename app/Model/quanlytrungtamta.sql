@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2024 at 08:18 AM
+-- Generation Time: May 27, 2024 at 03:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -83,10 +83,10 @@ CREATE TABLE `registrations` (
 --
 
 INSERT INTO `registrations` (`registration_id`, `student_id`, `schedule_id`, `registration_date`) VALUES
-('DK08', 'HV10', 'DUCCM62', '2024-05-27 03:40:50'),
-('DK11', 'HV10', 'PRO36', '2024-05-27 03:40:26'),
-('DK53', 'HV45', 'BASIC29', '2024-05-25 07:36:39'),
-('DK82', 'HV10', 'BASIC29', '2024-05-27 02:43:04');
+('DK47', 'HV49', 'DUCCM62', '2024-05-27 07:53:46'),
+('DK70', 'HV10', 'PRO36', '2024-05-27 07:52:12'),
+('DK92', 'HV10', 'LEARN52', '2024-05-27 07:55:42'),
+('DK98', 'HV24', 'DUCCM62', '2024-05-27 07:52:01');
 
 -- --------------------------------------------------------
 
@@ -137,7 +137,8 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`student_id`, `name`, `address`, `phone`, `email`) VALUES
 ('HV10', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com'),
-('HV45', 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604344', 'nguyentungsk2004@gmail.com');
+('HV24', 'Phạm Trung Hưng', 'Đại Bản - An Dương - Hải Phòng', '432112341', '1234@gmail.com'),
+('HV49', 'Nguyễn Tùng Dường', 'Hảo Hảo - Chua Cay - Mật Ngọt', '123412343', '12341234@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -182,8 +183,10 @@ CREATE TABLE `webregistrations` (
 --
 
 INSERT INTO `webregistrations` (`name`, `address`, `phone`, `email`, `schedule_id`, `time`) VALUES
-('NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC29', '2024-05-27 04:44:01'),
-('NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'MIDDLE58', '2024-05-27 04:44:01');
+('NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC04', '2024-05-27 13:50:04'),
+('Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com', 'DUCCM62', '2024-05-27 13:25:57'),
+('Nguyễn Tùng Lâm', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0681995870', 'saikornguyen@gmail.com', 'LEARN52', '2024-05-27 13:50:25'),
+('NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'PRO36', '2024-05-27 13:50:04');
 
 --
 -- Indexes for dumped tables
