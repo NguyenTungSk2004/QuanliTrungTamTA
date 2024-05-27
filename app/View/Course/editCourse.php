@@ -38,6 +38,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="price">Giá khóa học:</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="price" value="<?php echo $course['price']?>">
+                        <div class="input-group-append">
+                        <span class="input-group-text">VND</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
                     <label for="start_date">Ngày bắt đầu:</label>
                     <input type="date" class="form-control" name="start_date" value="<?php echo $course['start_date']?>">
                 </div>

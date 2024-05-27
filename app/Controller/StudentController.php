@@ -85,41 +85,65 @@ class RegistrationController extends StudentController{
             $address = $_POST['address'];
             $phone = $_POST['phone'];
             $email = $_POST['email'];
-            $student_id = $this->db->randomId('student_id','HV');
             $schedule_id = $_POST['idCourse'];
+            
+            $registration_date = $_POST['time']; //time của phê duyệt
 
-            // lấy thời gian hiện tại
-            $currentDateTime = new DateTime();
-            $currentDateTimeString = $currentDateTime->format('Y-m-d H:i:s');
+            // Check if the student already exists
+            $checkTo = $this->db->table('students')->get(['name'=>$name, 'address'=> $address, 'phone'=> $phone, 'email'=> $email]);
+            $this->db->logToConsole("Check if student exists: " . json_encode($checkTo));
+    
+            try {
+                if (!empty($checkTo)) {
+                    // Student exists, retrieve the student_id
+                    $student_id = $checkTo[0]['student_id'];
+                } else {
+                    // Student does not exist, generate a new student_id and insert the student record
+                    $student_id = $this->db->randomId('student_id', 'HV');
+                    $data_students = [
+                        'student_id' => $student_id,
+                        'name' => $name,
+                        'address' => $address,
+                        'phone' => $phone,
+                        'email' => $email,
+                    ];
+                    $this->db->table('students')->insert($data_students);
+                }
+    
+                // Add registrations for each schedule_id
+                foreach ($schedule_id as $id) {
+                    $checkSchedule = $this->db->table('registrations')->get(['student_id' => $student_id, 'schedule_id' => $id]);
+    
+                    if (!empty($checkSchedule)) {
+                        // Skip if the registration already exists
+                        continue;
+                    }
 
-            try{
-                // thêm dữ liệu vào bảng students
-                $data_students = [
-                    'student_id' => $student_id,
-                    'name' => $name,
-                    'address' => $address,
-                    'phone' => $phone,
-                    'email' => $email,
-                ];
-
-                $this->db->table('students')->insert($data_students);
-
-                // thêm dữ liệu vào bảng registrations
-                foreach($schedule_id as $id){
-                    $registration_id = $this->db->randomId('registration_id','DK');
+                    // Generate new registration_id and insert the registration record
+                    $registration_id = $this->db->randomId('registration_id', 'DK');
                     $data_registrations = [
                         'registration_id' => $registration_id,
                         'student_id' => $student_id,
                         'schedule_id' => $id,
                     ];
+                    // Phê duyệt đăng ký
+                    if(isset($registration_date)){
+                        $data_registrations['registration_date'] = $registration_date;
+                        $this->db->table('webregistrations')->delete('schedule_id', $id);
+                        $this->db->table('registrations')->insert($data_registrations);
+                        header('location: /QuanLiTrungTamTA/home');
+                        exit();
+                    }
+
                     $this->db->table('registrations')->insert($data_registrations);
                 }
-            }catch(PDOException $e){
+            } catch (PDOException $e) {
                 $this->db->logToConsole('Lỗi thêm dữ liệu student: ' . $e->getMessage());
             }
         }
-        
+        // Optionally, you can redirect after the operation
         header('location: /QuanLiTrungTamTA/student');
     }
+    
 }
 ?>

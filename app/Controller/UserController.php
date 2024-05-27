@@ -17,25 +17,18 @@ class UserController {
 
 class LandingController extends UserController {
     public function index(){
+
+        $listCourse = $this->db->table('course')->get();
+        // Dữ liệu hiển thị khóa học trong addStudent
+        $schedules = $this->db->table('schedules')->JoinTable(['course'=>'course_id']);
+
         include './app/View/User/landing.php';
     }
 }
 
 class LoginController extends UserController {
     public function index(){
-        // session_start();
-        // if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        //     $username = $_POST['username'];
-        //     $_SESSION[$username] = $username;
-        //     $password = $_POST['password'];
-        //     $user = $this->db->table('users')->get();
-        //     if(isset($user)){
-        //         if(password_verify($password, $user[0]['password'])){
-        //             $_SESSION['user'] = $user[0];
-        //             header('location: ./home');
-        //         }
-        //     }
-        // }
+
         header('location: ./home');
     }
 }
@@ -44,6 +37,32 @@ class LoginController extends UserController {
 class RegisterController extends UserController {
     public function index(){
         include './app/View/User/register.php';
+    }
+
+    public function courseRegistration(){   
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $name = $_POST['name'];
+            $address = $_POST['address'];
+            $phone = $_POST['phone'];
+            $email = $_POST['email'];
+            $schedule_id = $_POST['idCourse'];
+        
+            try{
+                $data =[
+                    'name' => $name,
+                    'address' => $address,
+                    'phone' => $phone,
+                    'email' => $email,
+                ];
+                foreach($schedule_id as $id){
+                    $data['schedule_id'] = $id;
+                    $this->db->table('webregistrations')->insert($data);
+                }
+            }catch(PDOException $e){
+                $this->db->logToConsole('Lỗi thêm dữ liệu webregistrations: ' . $e->getMessage());
+            }
+        }
+        header('location: /QuanLiTrungTamTA/');
     }
 }
 

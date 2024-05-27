@@ -27,6 +27,7 @@ $route->post('/login', 'LoginController@index');
 $route->post('/logout', 'LogoutController@index');
 $route->post('/register', 'RegisterController@index');
 $route->post('/forgotPassword', 'ForgotPasswordController@index');
+$route->post('/courseRegistration', 'RegisterController@courseRegistration');
 
 //Điều hướng của trang chủ
 $route->get('/home', 'HomeController@index');

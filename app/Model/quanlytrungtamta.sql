@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2024 at 05:47 PM
+-- Generation Time: May 27, 2024 at 08:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,10 +43,11 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `title`, `description`, `duration`, `start_date`, `end_date`, `price`, `img`) VALUES
-('BASIC', 'Tiếng anh cơ bản 1', '  Khóa học giúp bạn nâng cao khá năng ngoại ngữ chỉ sau 3 tháng', 3, '2024-05-01', '2024-05-03', 0, 'https://th.bing.com/th/id/OIP.rzKmLbDrL_jFDjrS2Lni9gHaEK?rs=1&pid=ImgDetMain'),
-('LEARN', 'Tiếng anh cho người mới bắt đầu', 'Tiếng anh giao tiếp cơ bản giúp người học có thể giao tiếp cơ bản sau 2 tháng', 2, '2024-05-03', '2024-05-05', 0, 'https://th.bing.com/th/id/OIP.k5sHBKdRWU_iCgK78k85NgHaDw?rs=1&pid=ImgDetMain'),
-('MIDDLE', 'Tiếng anh là tôi', 'Khóa học truyền tải đam mê và niềm yêu thích tiếng anh đến mọi người, lan tỏa sức sống', 4, '2024-05-17', '2024-05-24', 0, 'https://th.bing.com/th/id/R.d77c69508141d6d0b106391e3fdddce8?rik=Xd4E2A%2fwmTGsIg&riu=http%3a%2f%2fdanview.net%2fwp-content%2fuploads%2f2017%2f08%2fEnglish1-1024x690.jpg&ehk=hjIyPQZ0UmNAymSUc8gGNqinZrrkQMrIQR%2fCLkQef5U%3d&risl=&pid=ImgRaw&r=0'),
-('PRO', 'Khóa học tiếng anh nâng cao', 'Cải thiện trình độ tiếng anh của bạn chỉ trong 6 tháng cùng các chuyên gia đến từ ấn độ', 6, '2024-05-01', '2024-05-31', 0, 'https://imgk.timesnownews.com/story/english.png');
+('BASIC', 'Tiếng anh cơ bản 1', '  Khóa học giúp bạn nâng cao khá năng ngoại ngữ chỉ sau 3 tháng', 3, '2024-05-01', '2024-05-03', 20000, 'https://th.bing.com/th/id/OIP.rzKmLbDrL_jFDjrS2Lni9gHaEK?rs=1&pid=ImgDetMain'),
+('DUCCM', 'English của Đức CM', ' Khóa học giúp bạn cải thiện trình độ tiếng anh trở nên thượng thừa với Giảng viên kì cựu Đức CM', 3, '2024-05-07', '2024-05-31', 350000, 'https://th.bing.com/th/id/OIP.-8jnERGR1BmnYRFHXG4-MAHaHa?rs=1&pid=ImgDetMain'),
+('LEARN', 'Tiếng anh cho người mới bắt đầu', 'Tiếng anh giao tiếp cơ bản giúp người học có thể giao tiếp cơ bản sau 2 tháng', 2, '2024-05-03', '2024-05-05', 300000, 'https://th.bing.com/th/id/OIP.k5sHBKdRWU_iCgK78k85NgHaDw?rs=1&pid=ImgDetMain'),
+('MIDDLE', 'Tiếng anh là tôi', 'Khóa học truyền tải đam mê và niềm yêu thích tiếng anh đến mọi người, lan tỏa sức sống', 4, '2024-05-17', '2024-05-24', 500000, 'https://th.bing.com/th/id/R.d77c69508141d6d0b106391e3fdddce8?rik=Xd4E2A%2fwmTGsIg&riu=http%3a%2f%2fdanview.net%2fwp-content%2fuploads%2f2017%2f08%2fEnglish1-1024x690.jpg&ehk=hjIyPQZ0UmNAymSUc8gGNqinZrrkQMrIQR%2fCLkQef5U%3d&risl=&pid=ImgRaw&r=0'),
+('PRO', 'Khóa học tiếng anh nâng cao', 'Cải thiện trình độ tiếng anh của bạn chỉ trong 6 tháng cùng các chuyên gia đến từ ấn độ', 6, '2024-05-01', '2024-05-31', 600000, 'https://imgk.timesnownews.com/story/english.png');
 
 -- --------------------------------------------------------
 
@@ -82,11 +83,10 @@ CREATE TABLE `registrations` (
 --
 
 INSERT INTO `registrations` (`registration_id`, `student_id`, `schedule_id`, `registration_date`) VALUES
-('DK07', 'HV73', 'MIDDLE75', '2024-05-25 15:00:49'),
-('DK14', 'HV73', 'PRO36', '2024-05-25 15:00:49'),
-('DK30', 'HV73', 'LEARN52', '2024-05-25 15:00:49'),
+('DK08', 'HV10', 'DUCCM62', '2024-05-27 03:40:50'),
+('DK11', 'HV10', 'PRO36', '2024-05-27 03:40:26'),
 ('DK53', 'HV45', 'BASIC29', '2024-05-25 07:36:39'),
-('DK99', 'HV73', 'BASIC04', '2024-05-25 15:00:49');
+('DK82', 'HV10', 'BASIC29', '2024-05-27 02:43:04');
 
 -- --------------------------------------------------------
 
@@ -111,6 +111,7 @@ INSERT INTO `schedules` (`schedule_id`, `course_id`, `teacher_id`, `day_of_week`
 ('BASIC04', 'BASIC', 'GV01', 'monday', '17:21:00', '19:21:00'),
 ('BASIC29', 'BASIC', 'GV69', 'tuesday, sunday', '16:35:00', '19:35:00'),
 ('BASIC43', 'BASIC', 'GV01', 'monday', '22:26:00', '21:26:00'),
+('DUCCM62', 'DUCCM', 'GV01', 'monday', '14:19:00', '16:15:00'),
 ('LEARN52', 'LEARN', 'GV10', 'monday, tuesday, wednesday', '13:00:00', '17:00:00'),
 ('MIDDLE58', 'MIDDLE', 'GV69', 'monday, sunday', '08:59:00', '10:59:00'),
 ('MIDDLE75', 'MIDDLE', 'GV01', 'monday, tuesday, wednesday', '14:59:00', '16:59:00'),
@@ -135,8 +136,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `name`, `address`, `phone`, `email`) VALUES
-('HV45', 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604344', 'nguyentungsk2004@gmail.com'),
-('HV73', 'Phạm Trung Hưng', 'Đại Bản - An Dương - Hải Phòng', '0312222222', 'phamtrunghung@gmail.com');
+('HV10', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com'),
+('HV45', 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604344', 'nguyentungsk2004@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -160,6 +161,29 @@ INSERT INTO `teachers` (`teacher_id`, `name`, `address`, `phone`, `email`) VALUE
 ('GV01', 'Nguyễn Hạnh Phúc', 'Hải phòng -Việt Nam', '0123456789', 'nguyenhanhphuc@gmail.com'),
 ('GV10', 'Nguyễn Tùng Dường', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0243523451', '12341234@gmail.com'),
 ('GV69', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `webregistrations`
+--
+
+CREATE TABLE `webregistrations` (
+  `name` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `schedule_id` varchar(32) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `webregistrations`
+--
+
+INSERT INTO `webregistrations` (`name`, `address`, `phone`, `email`, `schedule_id`, `time`) VALUES
+('NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC29', '2024-05-27 04:44:01'),
+('NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'MIDDLE58', '2024-05-27 04:44:01');
 
 --
 -- Indexes for dumped tables
@@ -205,6 +229,12 @@ ALTER TABLE `students`
 --
 ALTER TABLE `teachers`
   ADD PRIMARY KEY (`teacher_id`);
+
+--
+-- Indexes for table `webregistrations`
+--
+ALTER TABLE `webregistrations`
+  ADD PRIMARY KEY (`schedule_id`);
 
 --
 -- Constraints for dumped tables

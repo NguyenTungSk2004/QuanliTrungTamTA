@@ -26,9 +26,10 @@
         <div class="col-md-6">
         <p><b>Mã khóa học: </b> <?php echo $course['course_id']?></p>
         <p><b>Tiêu đề: </b> <?php echo $course['title']?></p>
-        <p><b>Thời lượng: </b> <?php echo $course['duration']?></p>
+        <p><b>Thời lượng: </b> <?php echo $course['duration']?> Tháng</p>
         <p><b>Ngày bắt đầu: </b> <?php echo $course['start_date']?></p>
         <p><b>Ngày kết thúc: </b> <?php echo $course['end_date']?></p>
+        <p><b>Giá khóa học: </b> <?php echo $course['price']?> VND</p>
         <p><b>Mô tả: </b> <?php echo $course['description']?> </p>
         <button type="button" class="btn btn-warning mb-4" data-toggle="modal" data-target="#editCourse">
           <i class="fas fa-edit"></i>

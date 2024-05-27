@@ -86,6 +86,7 @@ class CourseController{
             $duration = $_POST['duration'];
             $start_date = $_POST['start_date'];
             $end_date = $_POST['end_date'];
+            $price = $_POST['price'];
 
             $img = 'public/img/default.jpg'; // Đặt giá trị mặc định cho hình ảnh
 
@@ -112,6 +113,7 @@ class CourseController{
                 'duration' => $duration,
                 'start_date' => $start_date,
                 'end_date' => $end_date,
+                'price' => $price,
                 'img' => $img
             ];
             try{
@@ -149,6 +151,7 @@ class CourseController{
             $duration = $_POST['duration'];
             $start_date = $_POST['start_date'];
             $end_date = $_POST['end_date'];
+            $price = $_POST['price'];
 
             // Kiểm tra người dùng sử dụng url hay upload hình ảnh và xử lí
             if($_POST['imageSource'] == 'url'){
@@ -175,6 +178,7 @@ class CourseController{
                 'duration' => $duration,
                 'start_date' => $start_date,
                 'end_date' => $end_date,
+                'price' => $price
             ];
             if(!empty($img) && isset($img)){
                 $data = array_merge($data, ['img' => $img]);

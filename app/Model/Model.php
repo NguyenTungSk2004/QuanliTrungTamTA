@@ -285,7 +285,6 @@ class Database {
             $this->logToConsole("Lỗi xóa dữ liệu: " . $e->getMessage());
         }
     }
-    
 
     /**
      * Phương thức randomId để tạo một ID ngẫu nhiên dựa trên FormID đã cho.

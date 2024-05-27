@@ -7,6 +7,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Custom CSS -->
+  <link rel="stylesheet" href="./public/css/cssProject.css">
   <style>
     #banner {
       background-color: #f8f9fa;
@@ -69,39 +70,22 @@
       <!-- table courses (class row)-->
       <div class="row">
         <!-- PHP Loop to display courses -->
+        <?php foreach($listCourse as $course):?>
         <div class="col-lg-4 mb-4">
-            <div class="card">
-                <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" class="card-img-top" alt="Tiếng anh cơ bản">
+            <div class="card table-row-hover">
+                <img 
+                    src="<?php echo $course['img']?>" style="height:15em;" 
+                    class="card-img-top" 
+                    alt="<?php echo $course['title']?>"
+                >
                 <div class="card-body">
-                    <h5 class="card-title">Tiếng anh cơ bản</h5>
-                    <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Xem chi tiết</button>
+                    <h5 class="card-title"><?php echo $course['title']?></h5>
+                    <p class="card-text"><?php echo $course['description']?></p>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#courseRegistration">Đăng ký ngay</button>
                 </div>
             </div>
         </div>
-
-            <div class="col-lg-4 mb-4">
-            <div class="card">
-                <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" class="card-img-top" alt="Tiếng anh cơ bản">
-                <div class="card-body">
-                    <h5 class="card-title">Tiếng anh cơ bản</h5>
-                    <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Xem chi tiết</button>
-                </div>
-            </div>
-        </div>
-
-            <div class="col-lg-4 mb-4">
-            <div class="card">
-                <img src="https://luanvan24.com/wp-content/uploads/2021/02/hinh-anh-de-tai-nghien-cuu-khoa-hoc-mon-tieng-anh-2.jpg" class="card-img-top" alt="Tiếng anh cơ bản">
-                <div class="card-body">
-                    <h5 class="card-title">Tiếng anh cơ bản</h5>
-                    <p class="card-text">Khóa học giúp bạn cải thiện trình độ tiếng anh của mình một cách nhanh chóng bắt đầu từ con số 0</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Xem chi tiết</button>
-                </div>
-            </div>
-        </div>
-
+        <?php endforeach;?>
       </div>
       <!-- end table courses (class row)-->
     </div>
@@ -115,6 +99,8 @@
   </footer>
   
 
+  <!-- include component -->
+<?php include './app/View/User/courseRegistration.php'?>
 <!-- Bootstrap JS and jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
