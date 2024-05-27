@@ -9,6 +9,7 @@
  * @method phương thức xử lí
  */
 
+include './app/SendMail/mail.php';
 include './app/Model/Model.php';
 include './app/Route/Route.php';
 include './app/Controller/HomeController.php';
