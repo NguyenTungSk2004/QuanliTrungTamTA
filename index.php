@@ -34,7 +34,7 @@ $route->post('/verify', 'RegisterController@verify');
 $route->post('/forgotPassword', 'ForgotPasswordController@index');
 $route->post('/courseRegistration', 'RegisterController@courseRegistration');
 
-if(isset($_SESSION['username']) && !empty($_SESSION['username']))
+if(isset($_SESSION['full_name']) && !empty($_SESSION['full_name']))
 {
     //Điều hướng của trang chủ
     $route->get('/home', 'HomeController@index');

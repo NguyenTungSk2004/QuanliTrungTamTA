@@ -32,7 +32,7 @@ class UserController {
 
 class LandingController extends UserController {
     public function index(){
-        if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+        if(isset($_SESSION['full_name']) && !empty($_SESSION['full_name'])){
             header('Location: /QuanLiTrungTamTA/home');
             exit();
         }
@@ -52,7 +52,7 @@ class LandingController extends UserController {
 
 class LoginController extends UserController {
     public function index(){
-        if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+        if(isset($_SESSION['full_name']) && !empty($_SESSION['full_name'])){
             header('Location: /QuanLiTrungTamTA/home');
             exit();
         }
@@ -62,7 +62,7 @@ class LoginController extends UserController {
             $password = $_POST['password'];
             $user = $this->db->table('users')->get(['username' => $username, 'password' => $password]);
             if(isset($user) && !empty($user)){
-                $_SESSION['username'] = $user[0]['full_name'];
+                $_SESSION['full_name'] = $user[0]['full_name'];
                 $this->phpAlert('Đăng nhập thành công !');
                 header('Location: /QuanLiTrungTamTA/home');
                 exit();

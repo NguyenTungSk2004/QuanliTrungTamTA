@@ -28,7 +28,7 @@
         <!-- Tên người dùng -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-user"></i> <?php echo $_SESSION['username']?>
+            <i class="fa fa-user"></i> <?php echo $_SESSION['full_name']?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Hồ Sơ</a>
