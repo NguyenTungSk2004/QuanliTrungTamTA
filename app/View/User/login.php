@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
               
-          <form id="loginForm" action="./home" method="POST">
+          <form id="loginForm" action="/QuanLiTrungTamTA/login" method="POST">
 
                 <div class="form-group">
                   <label for="username">Tên đăng nhập:</label>

@@ -1,3 +1,8 @@
+<?php
+      $url = $_SERVER['REQUEST_URI'];
+      $url = parse_url($url, PHP_URL_PATH); // xóa phần http://example.com/
+?>
+
 <!-- Navbar Section -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> <!-- Thêm class 'fixed-top' để navbar cố định ở đầu trang -->
   <div class="container">
@@ -6,10 +11,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Thanh tìm kiếm -->
-    <?php
-      $url = $_SERVER['REQUEST_URI'];
-      $url = parse_url($url, PHP_URL_PATH); // xóa phần http://example.com/
-    ?>
     <form class="form-inline my-2 my-lg-0 mx-auto" action="<?php echo $url?>" method="GET">
       <div class="input-group">
         <input type="hidden" name="course_id" value="<?php echo isset($_GET['course_id'])?$_GET['course_id']:'';?>">
@@ -27,7 +28,7 @@
         <!-- Tên người dùng -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-user"></i> Nguyễn Văn Tùng
+            <i class="fa fa-user"></i> <?php echo $_SESSION['username']?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Hồ Sơ</a>

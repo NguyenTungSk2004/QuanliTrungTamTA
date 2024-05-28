@@ -8,7 +8,6 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
-// Hàm để gửi email
 function sendEmail($to, $subject, $body, $fromName = 'My name is TungSK') {
     $mail = new PHPMailer(true); // Khai báo biến $mail bằng true để bật chế độ thông báo lỗi
 
@@ -25,6 +24,9 @@ function sendEmail($to, $subject, $body, $fromName = 'My name is TungSK') {
         // Thiết lập người gửi và người nhận
         $mail->setFrom('tung604345@gmail.com', $fromName);
         $mail->addAddress($to);
+
+        // Thêm header tùy chỉnh
+        $mail->addCustomHeader('X-Custom-Header', 'HeaderValue');
 
         // Thiết lập chủ đề và nội dung email
         $mail->Subject = $subject;
@@ -45,11 +47,9 @@ function sendEmail($to, $subject, $body, $fromName = 'My name is TungSK') {
 
 
 // // Gửi email với các thông tin mô phỏng
-// $to = 'changtraicodon2205@gmail.com';
-// $subject = 'Test Email của TungSK';
-// $body = 'Đây là test email mà thôi';
+// $to = 'ducddeptry@gmail.com';
+// $subject = 'Email of TungSK';
+// $body = 'Đây là test email mà thôi, cubu di';
 // $result = sendEmail($to, $subject, $body);
 
-// // Hiển thị kết quả
-// echo $result;
 ?>

@@ -116,6 +116,7 @@ class RegistrationController extends StudentController{
     
                     if (!empty($checkSchedule)) {
                         // Skip if the registration already exists
+                        $this->db->table('webregistrations')->deleteExpand(['schedule_id'=> $id, 'time' => $registration_date]);
                         continue;
                     }
 
@@ -129,7 +130,7 @@ class RegistrationController extends StudentController{
                     // Phê duyệt đăng ký
                     if(isset($registration_date)){
                         $data_registrations['registration_date'] = $registration_date;
-                        $this->db->table('webregistrations')->delete('schedule_id', $id);
+                        $this->db->table('webregistrations')->deleteExpand(['schedule_id'=> $id, 'time' => $registration_date]);
                         $this->db->table('registrations')->insert($data_registrations);
                         header('location: /QuanLiTrungTamTA/home');
                         exit();

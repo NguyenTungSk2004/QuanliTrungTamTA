@@ -287,6 +287,54 @@ class Database {
     }
 
     /**
+     * Phương thức delete để xóa các bản ghi từ bảng đã chỉ định dựa trên các điều kiện cho trước.
+     * 
+     * @param array $conditions Mảng các điều kiện xóa.
+     * @return void
+     */
+    public function deleteExpand($conditions = []) {
+        try {
+            // Kiểm tra xem table chính đã được thiết lập chưa
+            if (empty($this->table)) {
+                throw new Exception("Table chính chưa được thiết lập.");
+            }
+
+            // Bắt đầu xây dựng câu truy vấn SQL
+            $sqlString = "DELETE FROM $this->table";
+
+            // Thêm điều kiện WHERE nếu có
+            if (!empty($conditions)) {
+                $sqlString .= " WHERE ";
+                $whereConditions = [];
+                foreach ($conditions as $column => $value) {
+                    $whereConditions[] = $column . " = ?";
+                }
+                $sqlString .= implode(" AND ", $whereConditions);
+            }
+
+            // Chuẩn bị câu truy vấn
+            $query = $this->conn->prepare($sqlString);
+
+            // Bind các giá trị vào câu truy vấn
+            if (!empty($conditions)) {
+                $i = 1;
+                foreach ($conditions as $value) {
+                    $query->bindValue($i, $value);
+                    $i++;
+                }
+            }
+
+            // Thực thi câu truy vấn
+            $query->execute();
+
+        } catch (PDOException $e) {
+            $this->logToConsole("Lỗi xóa dữ liệu: " . $e->getMessage());
+        } catch (Exception $e) {
+            $this->logToConsole("Lỗi: " . $e->getMessage());
+        }
+    }
+
+    /**
      * Phương thức randomId để tạo một ID ngẫu nhiên dựa trên FormID đã cho.
      * 
      * @param string $Key Tiền tố cho ID.

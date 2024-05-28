@@ -35,7 +35,7 @@ class Route {
                 $controller->$action($param);
             }
         } else {
-            echo 'Router not found';
+            header('location: ./');
         }
     }
 }
