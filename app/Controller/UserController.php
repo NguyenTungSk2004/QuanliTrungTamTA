@@ -85,7 +85,7 @@ class RegisterController extends UserController {
             $full_name = $_POST['full_name'];
             $verification_code = $this->generateVerificationCode();
             
-            $expires_at = date("Y-m-d H:i:s", time()+(1*60)); // 1 minutes for verification code expiration
+            $expires_at = date("Y-m-d H:i:s", time()+(2*60)); // 2 minutes for verification code expiration
 
             $data = [
                 'full_name' => $full_name,
@@ -211,7 +211,7 @@ class ForgotPasswordController extends UserController {
             if (!empty($users)) {
                 // Generate a token
                 $token = bin2hex(random_bytes(50));
-                $expires_at = date("Y-m-d H:i:s", time()+(15*60)); // 15 minutes for token expiration
+                $expires_at = date("Y-m-d H:i:s", time()+(15*60)); // 15 minutes for token code expiration
 
                 // Insert token into password_resets table
                 $this->db->table('password_resets');
@@ -267,11 +267,11 @@ class ForgotPasswordController extends UserController {
 
                 // Token has expired
                 $this->db->table('password_resets')->delete('token', $token);
-                $this->phpAlert('Liên kết đặt lại mật khẩu đã hết hạn.','/QuanLiTrungTamTA');
+                $this->phpAlert('Liên kết đặt lại mật khẩu của bạn đã hết hạn.','/QuanLiTrungTamTA');
                 exit();
             } 
 
-            $this->phpAlert('Liên kết đặt lại mật khẩu không hợp lệ.','/QuanLiTrungTamTA');
+            $this->phpAlert('Liên kết đặt lại mật khẩu của bạn không hợp lệ.','/QuanLiTrungTamTA');
             exit();
         } 
 
@@ -279,7 +279,12 @@ class ForgotPasswordController extends UserController {
         $token_check = $this->db->table('password_resets')->get(['token' => $token]);
 
         if(empty($token_check) || !isset($token_check)) {
-            $this->phpAlert('Liên kết đặt lại mật khẩu không hợp lệ.','/QuanLiTrungTamTA');
+            $this->phpAlert('Liên kết đặt lại mật khẩu của bạn không tồn tại.','/QuanLiTrungTamTA');
+            exit();
+        }
+        if (strtotime($token_check['expires_at']) < time()){
+            $this->db->table('password_resets')->delete('token', $token);
+            $this->phpAlert('Liên kết đặt lại mật khẩu của bạn đã hết hạn.','/QuanLiTrungTamTA');
             exit();
         }
 
