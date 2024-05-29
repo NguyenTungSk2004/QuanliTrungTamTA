@@ -90,7 +90,7 @@ class RegistrationController extends StudentController{
             $registration_date = $_POST['time']; //time của phê duyệt
 
             // Check if the student already exists
-            $checkTo = $this->db->table('students')->get(['name'=>$name, 'address'=> $address, 'phone'=> $phone, 'email'=> $email]);
+            $checkTo = $this->db->table('students')->get(['name'=>$name, 'phone'=> $phone, 'email'=> $email]);
             $this->db->logToConsole("Check if student exists: " . json_encode($checkTo));
     
             try {
