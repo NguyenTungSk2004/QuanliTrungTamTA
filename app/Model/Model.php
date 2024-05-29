@@ -266,6 +266,7 @@ class Database {
             $query->execute(array_values($data));
         }catch(PDOException $e){
             $this->logToConsole("Lỗi thêm dữ liệu: " . $e->getMessage());
+            exit();
         }
     }
 

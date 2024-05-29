@@ -60,10 +60,12 @@ class LoginController extends UserController {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $username = $_POST['username'];
             $password = $_POST['password'];
+            $password = md5($password);
+
+            // Kiểm tra tài khoản và mật khẩu
             $user = $this->db->table('users')->get(['username' => $username, 'password' => $password]);
             if(isset($user) && !empty($user)){
                 $_SESSION['full_name'] = $user[0]['full_name'];
-                $this->phpAlert('Đăng nhập thành công !');
                 header('Location: /QuanLiTrungTamTA/home');
                 exit();
             }
@@ -84,7 +86,7 @@ class RegisterController extends UserController {
             $phone = $_POST['phone'];
             $full_name = $_POST['full_name'];
             $verification_code = $this->generateVerificationCode();
-    
+            
             $data = [
                 'full_name' => $full_name,
                 'username' => $username,
@@ -99,14 +101,9 @@ class RegisterController extends UserController {
                 $this->db->table('temporary_users')->insert($data);
     
                 // Gửi mã xác thực qua email
-                $subject = "Your Authentication Code";
+                $subject = "Account Verification for " . $username;
                 $body = "Your Authentication Code: $verification_code";
-                if(sendEmail($email, $subject, $body)){
-                    $subject = "Your Account has been created successfully";
-                    $body = "Your username: " .$username ."\n Your password: " .$password ."\n Use this credential to login to our website. \n Thank you for registration!";
-                    sendEmail($email, $subject, $body);
-                }
-    
+                sendEmail($email, $subject, $body);
             } catch(PDOException $e) {
                 $this->db->logToConsole('Lỗi thêm dữ liệu users: ' . $e->getMessage());
             }
@@ -136,11 +133,16 @@ class RegisterController extends UserController {
                     $this->db->table('temporary_users')->delete('id', $user['id']);
                     
                     unset($user['id']);  // Nếu bảng users có cột id tự động tăng, xóa trường này để tránh xung đột
-    
+                    
+                    // Gửi thông tin tài khoản khi đăng ký thành công
+                    $subject = "Your Account has been created successfully";
+                    $body = "Your username: " .$user['username'] ."\n Your password: " .$user['password'] ."\n Use this credential to login to our website. \n Thank you for registration!";
+                    sendEmail($user['email'], $subject, $body);
+
+                    $user['password'] = md5($user['password']);
                     // Chuyển dữ liệu từ temporary_users sang bảng users
                     $this->db->table('users')->insert($user);
 
-    
                     header('Location: /QuanLiTrungTamTA');
                     exit();
                 } else {
