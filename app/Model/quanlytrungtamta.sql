@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 01:53 PM
+-- Generation Time: May 29, 2024 at 04:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,7 +60,8 @@ CREATE TABLE `password_resets` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `expires_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -197,7 +198,7 @@ CREATE TABLE `temporary_users` (
   `email` varchar(255) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `verification_code` varchar(10) NOT NULL,
-  `is_verified` tinyint(1) DEFAULT 0,
+  `expires_at` datetime NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -221,8 +222,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`full_name`, `username`, `password`, `email`, `phone`, `created_at`) VALUES
-('Nguyễn Văn Tùng', 'nguyentungsk', '81dc9bdb52d04dc20036dbd8313ed055', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-29 10:19:50'),
-('Nguyễn Tùng Sk', 'nguyentungsk2004', 'def7924e3199be5e18060bb3e1d547a7', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-29 10:44:28');
+('Nguyễn Tùng Lâm', 'nguyentunglam', '81dc9bdb52d04dc20036dbd8313ed055', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-29 13:12:52'),
+('Nguyễn Văn Tùng', 'nguyentungsk', '81dc9bdb52d04dc20036dbd8313ed055', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-29 10:19:50');
 
 -- --------------------------------------------------------
 
@@ -325,13 +326,13 @@ ALTER TABLE `webregistrations`
 -- AUTO_INCREMENT for table `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `temporary_users`
 --
 ALTER TABLE `temporary_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `webregistrations`

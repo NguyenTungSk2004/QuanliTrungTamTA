@@ -27,12 +27,17 @@ session_start();
 
 // Điều hướng của quản lí user
 $route->get('/', 'LandingController@index');
+$route->post('/courseRegistration', 'RegisterController@courseRegistration'); // gửi phiếu đăng ký khóa học
+
 $route->post('/login', 'LoginController@index');
 $route->post('/logout', 'LogoutController@index');
+
 $route->post('/register', 'RegisterController@index');
 $route->post('/verify', 'RegisterController@verify');
-$route->post('/forgotPassword', 'ForgotPasswordController@index');
-$route->post('/courseRegistration', 'RegisterController@courseRegistration');
+
+$route->post('/forgotPassword', 'ForgotPasswordController@forgot_password');
+$route->post('/reset_password', 'ForgotPasswordController@reset_password');
+
 
 if(isset($_SESSION['full_name']) && !empty($_SESSION['full_name']))
 {

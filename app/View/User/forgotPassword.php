@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="forgotPasswordForm" method="POST" action="forgot_password.php">
+                <form id="forgotPasswordForm" method="POST" action="/QuanLiTrungTamTA/forgotPassword">
                     <div class="form-group">
                         <label for="forgotUsername">Tài khoản:</label>
                         <input type="text" class="form-control" id="forgotUsername" name="username" required>
@@ -21,7 +21,7 @@
                 </form>
             </div>
             <div class="modal-footer d-flex justify-content-start">
-                <button type="submit" class="btn btn-primary">Gửi mã xác thực</button>
+                <button type="submit" class="btn btn-primary" onclick="document.getElementById('forgotPasswordForm').submit();">Gửi mã xác thực</button>
             </div>
         </div>
     </div>
