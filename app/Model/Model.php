@@ -284,6 +284,7 @@ class Database {
             $query->execute([$value]); 
         }catch(PDOException $e){
             $this->logToConsole("Lỗi xóa dữ liệu: " . $e->getMessage());
+            exit();
         }
     }
 

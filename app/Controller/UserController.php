@@ -126,20 +126,21 @@ class RegisterController extends UserController {
                 // Kiểm tra mã xác thực trong bảng temporary_users
                 $user = $this->db->table('temporary_users')->get(['verification_code' => $verification_code]);
                 
-                // xóa mã xác thực hết hạn
-                if( strtotime($user['expires_at']) < time()){
-                    $this->db->table('temporary_users')->delete('verification_code', $verification_code);
-                    $this->phpAlert('Mã xác thực đã hết hạn !','/QuanLiTrungTamTA');
-                    exit();
-                }
 
                 if ($user) {
                     // Chuyển đổi đối tượng PDO thành mảng
+
                     $user = (array) $user[0];
+                    // xóa mã xác thực hết hạn
+                    if( strtotime($user['expires_at']) < time()){
+                        $this->db->table('temporary_users')->delete('verification_code', $verification_code);
+                        $this->phpAlert('Mã xác thực đã hết hạn !','/QuanLiTrungTamTA');
+                        exit();
+                    }
 
                     // Xóa các phần tử không cần thiết
                     unset($user['verification_code']);
-                    unset($user['is_verified']);
+                    unset($user['expires_at']);
                         
                     // Xóa người dùng từ temporary_users
                     $this->db->table('temporary_users')->delete('id', $user['id']);
