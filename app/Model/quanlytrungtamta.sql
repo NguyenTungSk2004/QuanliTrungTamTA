@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 12:54 PM
+-- Generation Time: May 29, 2024 at 01:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,6 +52,20 @@ INSERT INTO `course` (`course_id`, `title`, `description`, `duration`, `start_da
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `receipt`
 --
 
@@ -83,7 +97,12 @@ CREATE TABLE `registrations` (
 --
 
 INSERT INTO `registrations` (`registration_id`, `student_id`, `schedule_id`, `registration_date`) VALUES
+('DK07', 'HV05', 'LEARN52', '2024-05-29 10:51:31'),
+('DK25', 'HV05', 'PRO36', '2024-05-29 10:51:31'),
+('DK38', 'HV05', 'BASIC04', '2024-05-29 10:51:31'),
+('DK40', 'HV05', 'BASIC29', '2024-05-29 10:51:31'),
 ('DK47', 'HV49', 'DUCCM62', '2024-05-27 07:53:46'),
+('DK64', 'HV05', 'DUCCM62', '2024-05-29 10:51:31'),
 ('DK70', 'HV10', 'PRO36', '2024-05-27 07:52:12'),
 ('DK92', 'HV10', 'LEARN52', '2024-05-27 07:55:42'),
 ('DK98', 'HV24', 'DUCCM62', '2024-05-27 07:52:01');
@@ -136,6 +155,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `name`, `address`, `phone`, `email`) VALUES
+('HV05', 'NGUYỄN VĂN TÙNG', '1234', '0392604345', 'nguyentungsk2004@gmail.com'),
 ('HV10', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com'),
 ('HV24', 'Phạm Trung Hưng', 'Đại Bản - An Dương - Hải Phòng', '432112341', '1234@gmail.com'),
 ('HV49', 'Nguyễn Tùng Dường', 'Hảo Hảo - Chua Cay - Mật Ngọt', '123412343', '12341234@gmail.com');
@@ -159,7 +179,7 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`teacher_id`, `name`, `address`, `phone`, `email`) VALUES
-('GV01', 'Nguyễn Hạnh Phúc', 'Hải phòng -Việt Nam', '0123456789', 'nguyenhanhphuc@gmail.com'),
+('GV01', 'Nguyễn Hạnh Phúc', 'Hải phòng -Việt Nam', '0123456788', 'nguyenhanhphuc@gmail.com'),
 ('GV10', 'Nguyễn Tùng Dường', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0243523451', '12341234@gmail.com'),
 ('GV69', 'Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com');
 
@@ -225,14 +245,8 @@ CREATE TABLE `webregistrations` (
 --
 
 INSERT INTO `webregistrations` (`STT`, `name`, `address`, `phone`, `email`, `schedule_id`, `time`) VALUES
-(1, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC04', '2024-05-29 10:51:31'),
-(2, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC29', '2024-05-29 10:51:31'),
-(3, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC43', '2024-05-29 10:51:31'),
-(4, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'DUCCM62', '2024-05-29 10:51:31'),
-(5, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'LEARN52', '2024-05-29 10:51:31'),
 (6, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'MIDDLE58', '2024-05-29 10:51:31'),
-(7, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'MIDDLE75', '2024-05-29 10:51:31'),
-(8, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'PRO36', '2024-05-29 10:51:31');
+(7, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'MIDDLE75', '2024-05-29 10:51:31');
 
 --
 -- Indexes for dumped tables
@@ -243,6 +257,12 @@ INSERT INTO `webregistrations` (`STT`, `name`, `address`, `phone`, `email`, `sch
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `receipt`
@@ -300,6 +320,12 @@ ALTER TABLE `webregistrations`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `temporary_users`
