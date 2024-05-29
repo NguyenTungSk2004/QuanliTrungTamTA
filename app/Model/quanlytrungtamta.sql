@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2024 at 03:54 PM
+-- Generation Time: May 29, 2024 at 12:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -166,10 +166,52 @@ INSERT INTO `teachers` (`teacher_id`, `name`, `address`, `phone`, `email`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `temporary_users`
+--
+
+CREATE TABLE `temporary_users` (
+  `id` int(11) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `verification_code` varchar(10) NOT NULL,
+  `is_verified` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `full_name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`full_name`, `username`, `password`, `email`, `phone`, `created_at`) VALUES
+('Nguyễn Văn Tùng', 'nguyentungsk', '81dc9bdb52d04dc20036dbd8313ed055', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-29 10:19:50'),
+('Nguyễn Tùng Sk', 'nguyentungsk2004', 'def7924e3199be5e18060bb3e1d547a7', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-29 10:44:28');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `webregistrations`
 --
 
 CREATE TABLE `webregistrations` (
+  `STT` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `address` varchar(100) NOT NULL,
   `phone` varchar(10) NOT NULL,
@@ -182,11 +224,15 @@ CREATE TABLE `webregistrations` (
 -- Dumping data for table `webregistrations`
 --
 
-INSERT INTO `webregistrations` (`name`, `address`, `phone`, `email`, `schedule_id`, `time`) VALUES
-('NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC04', '2024-05-27 13:50:04'),
-('Nguyễn Tùng Sk', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0392604345', 'skfreelancer2004@gmail.com', 'DUCCM62', '2024-05-27 13:25:57'),
-('Nguyễn Tùng Lâm', 'Hảo Hảo - Chua Cay - Mật Ngọt', '0681995870', 'saikornguyen@gmail.com', 'LEARN52', '2024-05-27 13:50:25'),
-('NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'PRO36', '2024-05-27 13:50:04');
+INSERT INTO `webregistrations` (`STT`, `name`, `address`, `phone`, `email`, `schedule_id`, `time`) VALUES
+(1, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC04', '2024-05-29 10:51:31'),
+(2, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC29', '2024-05-29 10:51:31'),
+(3, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'BASIC43', '2024-05-29 10:51:31'),
+(4, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'DUCCM62', '2024-05-29 10:51:31'),
+(5, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'LEARN52', '2024-05-29 10:51:31'),
+(6, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'MIDDLE58', '2024-05-29 10:51:31'),
+(7, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'MIDDLE75', '2024-05-29 10:51:31'),
+(8, 'NGUYỄN VĂN TÙNG', 'fasdf', '0392604345', 'nguyentungsk2004@gmail.com', 'PRO36', '2024-05-29 10:51:31');
 
 --
 -- Indexes for dumped tables
@@ -234,10 +280,38 @@ ALTER TABLE `teachers`
   ADD PRIMARY KEY (`teacher_id`);
 
 --
+-- Indexes for table `temporary_users`
+--
+ALTER TABLE `temporary_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`username`);
+
+--
 -- Indexes for table `webregistrations`
 --
 ALTER TABLE `webregistrations`
-  ADD PRIMARY KEY (`schedule_id`);
+  ADD PRIMARY KEY (`STT`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `temporary_users`
+--
+ALTER TABLE `temporary_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `webregistrations`
+--
+ALTER TABLE `webregistrations`
+  MODIFY `STT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
