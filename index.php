@@ -76,6 +76,9 @@ if(isset($_SESSION['full_name']) && !empty($_SESSION['full_name']))
 
     // Điều hướng của quản lí thanh toán
     $route->get('/payment', 'PaymentController@index');
+    $route->get('/payment/receipts', 'PaymentController@show@receipts.php');
+    $route->get('/payment/expenses', 'PaymentController@show@expenses.php');
+    $route->get('/payment/report', 'PaymentController@show@report.php');
 
     // Điều hướng của quản lí kết quả học tập
     $route->get('/achievement', 'AchievementController@index');
