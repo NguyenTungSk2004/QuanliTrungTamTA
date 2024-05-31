@@ -44,6 +44,11 @@ if(isset($_SESSION['full_name']) && !empty($_SESSION['full_name']))
     //Điều hướng của trang chủ
     $route->get('/home', 'HomeController@index');
 
+    // Điều hướng của trang cá nhân
+    $route->get('/profile', 'UserController@index');
+    $route->post('/profile/edit', 'UserController@editProfile');
+    $route->post('/profile/resetPassWord', 'UserController@ResetPasswordProfile');
+
     // Điều hướng của quản lí học viên
     $route->get('/student', 'StudentController@index');
     $route->post('/student/deleteStudent', 'StudentController@deleteStudent');

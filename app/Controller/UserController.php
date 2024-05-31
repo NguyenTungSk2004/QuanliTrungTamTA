@@ -8,10 +8,61 @@ class UserController {
         'password' => ''
     ];
     protected $db;
-    public function index(){}
 
     public function __construct(){
         $this->db = new Database($this->config);
+    }
+
+    public function index(){
+        $user = $this->db->table('users')->get(['username' => $_SESSION['username'], 'full_name' =>$_SESSION['full_name']]);
+        $user = $user[0];
+        include './app/View/User/profile.php';
+    }
+
+    public function editProfile(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $full_name = $_POST['full_name'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+
+            $data = [
+                'email' => $email,
+                'phone' => $phone,
+                'full_name' => $full_name
+            ];
+
+            try {
+                $_SESSION['full_name'] = $full_name;
+                $this->db->table('users')->update($data, 'username', $_SESSION['username']);
+                $this->phpAlert('Cập nhật thông tin thành công !','/QuanLiTrungTamTA/profile');
+                exit();
+            } catch(PDOException $e) {
+                $this->db->logToConsole('Lỗi cập nhật thông tin người dùng: ' . $e->getMessage());
+            }
+        }
+        $this->phpAlert('Cập nhật thông tin thật bại !','/QuanLiTrungTamTA/profile');
+    }
+
+    public function ResetPasswordProfile(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $YourPassWord = $_POST['YourPassword'];
+            $YourPassWord = md5($YourPassWord);
+            $check_password = $this->db->table('users')->get(['username' => $_SESSION['username'], 'password' => $YourPassWord]);
+            $this->db->logToConsole($check_password);
+            if(!isset($check_password) || empty($check_password)){
+                $this->phpAlert('Mật khẩu không chính xác !','/QuanLiTrungTamTA/profile');
+                exit();
+            }
+            $password = $_POST['newPassword'];
+            $password = md5($password);
+            try {
+                $this->db->table('users')->update(['password' => $password], 'username', $_SESSION['username']);
+                $this->phpAlert('Đổi mật khẩu thành công !','/QuanLiTrungTamTA/profile');
+                exit();
+            } catch(PDOException $e) {
+                $this->db->logToConsole('Lỗi cập nhật mật khẩu người dùng: ' . $e->getMessage());
+            }
+        }
     }
 
     public function phpAlert($message,$url){
@@ -61,6 +112,7 @@ class LoginController extends UserController {
             $user = $this->db->table('users')->get(['username' => $username, 'password' => $password]);
             if(isset($user) && !empty($user)){
                 $_SESSION['full_name'] = $user[0]['full_name'];
+                $_SESSION['username'] = $user[0]['username'];
                 header('Location: /QuanLiTrungTamTA/home');
                 exit();
             }
@@ -278,14 +330,16 @@ class ForgotPasswordController extends UserController {
 
         $token = $_GET['token'];
         $token_check = $this->db->table('password_resets')->get(['token' => $token]);
-
+        $token_check = $token_check[0];
+        
+        $this->db->logToConsole($token_check);
         if(empty($token_check) || !isset($token_check)) {
-            $this->phpAlert('Liên kết đặt lại mật khẩu của bạn không tồn tại.','/QuanLiTrungTamTA');
+            $this->phpAlert('Liên kết đặt lại mật khẩu của bạn không tồn tại.','#');
             exit();
         }
-        if (strtotime($token_check['expires_at']) < time()){
+       if( strtotime($token_check['expires_at']) < time()){
             $this->db->table('password_resets')->delete('token', $token);
-            $this->phpAlert('Liên kết đặt lại mật khẩu của bạn đã hết hạn.','/QuanLiTrungTamTA');
+            $this->phpAlert('Liên kết đặt lại mật khẩu của bạn đã hết hạn.','#');
             exit();
         }
 

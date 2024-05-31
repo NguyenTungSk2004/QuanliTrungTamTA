@@ -31,8 +31,8 @@
             <i class="fa fa-user"></i> <?php echo $_SESSION['full_name']?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Hồ Sơ</a>
-            <a class="dropdown-item" href="#">Cài đặt chung</a>
+            <a class="dropdown-item" href="/QuanLiTrungTamTA/profile">Hồ Sơ</a>
+            <a class="dropdown-item" href="/QuanLiTrungTamTA/profile">Cài đặt chung</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/QuanLiTrungTamTA/logout">Đăng xuất</a>
           </div>
