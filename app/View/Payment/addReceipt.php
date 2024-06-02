@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label for="course_id">Khóa học</label>
-                        <select name="" id="course_id">
+                        <select name="" class="form-control" id="course_id">
                         </select>
                     </div>
                     <div class="form-group">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label for="method">Phương thức</label>
-                        <select name="" id="method">
+                        <select name="" class="form-control" id="method">
                             <option value="cash">Tiền mặt</option>
                             <option value="transfer">Chuyển khoản</option>
                         </select>

@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="method">Phương thức</label>
-                    <select name="" id="method">
+                    <select name="" class="form-control" id="method">
                         <option value="cash">Tiền mặt</option>
                         <option value="transfer">Chuyển khoản</option>
                     </select>
