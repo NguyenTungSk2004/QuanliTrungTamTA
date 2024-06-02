@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 04:26 PM
+-- Generation Time: Jun 02, 2024 at 06:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,6 +48,35 @@ INSERT INTO `course` (`course_id`, `title`, `description`, `duration`, `start_da
 ('LEARN', 'Tiếng anh cho người mới bắt đầu', 'Tiếng anh giao tiếp cơ bản giúp người học có thể giao tiếp cơ bản sau 2 tháng', 2, '2024-05-03', '2024-05-05', 300000, 'https://th.bing.com/th/id/OIP.k5sHBKdRWU_iCgK78k85NgHaDw?rs=1&pid=ImgDetMain'),
 ('MIDDLE', 'Tiếng anh là tôi', 'Khóa học truyền tải đam mê và niềm yêu thích tiếng anh đến mọi người, lan tỏa sức sống', 4, '2024-05-17', '2024-05-24', 500000, 'https://th.bing.com/th/id/R.d77c69508141d6d0b106391e3fdddce8?rik=Xd4E2A%2fwmTGsIg&riu=http%3a%2f%2fdanview.net%2fwp-content%2fuploads%2f2017%2f08%2fEnglish1-1024x690.jpg&ehk=hjIyPQZ0UmNAymSUc8gGNqinZrrkQMrIQR%2fCLkQef5U%3d&risl=&pid=ImgRaw&r=0'),
 ('PRO', 'Khóa học tiếng anh nâng cao', 'Cải thiện trình độ tiếng anh của bạn chỉ trong 6 tháng cùng các chuyên gia đến từ ấn độ', 6, '2024-05-01', '2024-05-31', 600000, 'https://imgk.timesnownews.com/story/english.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `expenses_id` varchar(4) NOT NULL,
+  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+  `amount_spent` int(11) NOT NULL,
+  `spent_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `method` varchar(20) NOT NULL,
+  `note` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grades`
+--
+
+CREATE TABLE `grades` (
+  `grade_id` varchar(4) NOT NULL,
+  `registration_id` varchar(4) NOT NULL,
+  `score` float NOT NULL,
+  `assessment_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `note` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -105,6 +134,7 @@ INSERT INTO `registrations` (`registration_id`, `student_id`, `schedule_id`, `re
 ('DK47', 'HV49', 'DUCCM62', '2024-05-27 07:53:46'),
 ('DK64', 'HV05', 'DUCCM62', '2024-05-29 10:51:31'),
 ('DK70', 'HV10', 'PRO36', '2024-05-27 07:52:12'),
+('DK73', 'HV24', 'PRO36', '2024-05-31 09:44:39'),
 ('DK92', 'HV10', 'LEARN52', '2024-05-27 07:55:42'),
 ('DK98', 'HV24', 'DUCCM62', '2024-05-27 07:52:01');
 
@@ -222,8 +252,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`full_name`, `username`, `password`, `email`, `phone`, `created_at`) VALUES
-('Nguyễn Tùng Lâm', 'nguyentunglam', '81dc9bdb52d04dc20036dbd8313ed055', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-29 13:12:52'),
-('Nguyễn Văn Tùng', 'nguyentungsk', '81dc9bdb52d04dc20036dbd8313ed055', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-29 10:19:50');
+('Nguyễn Duy Đức', 'nguyenduyduc', '81dc9bdb52d04dc20036dbd8313ed055', 'ducddeptry@gmail.com', '123412343', '2024-05-30 10:11:50'),
+('Nguyễn Tùng Sk', 'nguyentungsk', '81dc9bdb52d04dc20036dbd8313ed055', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-31 09:22:37'),
+('NGUYỄN VĂN TÙNG', 'tungsk', '2cb55fd9bb6e3fdd7722d4d00d865aa8', 'tung95182@st.vimaru.edu.vn', '0392604345', '2024-05-31 09:08:20');
 
 -- --------------------------------------------------------
 
@@ -258,6 +289,19 @@ INSERT INTO `webregistrations` (`STT`, `name`, `address`, `phone`, `email`, `sch
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indexes for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`expenses_id`);
+
+--
+-- Indexes for table `grades`
+--
+ALTER TABLE `grades`
+  ADD PRIMARY KEY (`grade_id`),
+  ADD KEY `registration_id` (`registration_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -326,13 +370,13 @@ ALTER TABLE `webregistrations`
 -- AUTO_INCREMENT for table `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `temporary_users`
 --
 ALTER TABLE `temporary_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `webregistrations`
@@ -343,6 +387,12 @@ ALTER TABLE `webregistrations`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `grades`
+--
+ALTER TABLE `grades`
+  ADD CONSTRAINT `grades_ibfk_1` FOREIGN KEY (`registration_id`) REFERENCES `registrations` (`registration_id`);
 
 --
 -- Constraints for table `receipt`
