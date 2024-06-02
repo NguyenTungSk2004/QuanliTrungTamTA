@@ -82,6 +82,7 @@ if(isset($_SESSION['full_name']) && !empty($_SESSION['full_name']))
 
     // Điều hướng của quản lí kết quả học tập
     $route->get('/achievement', 'AchievementController@index');
+    $route->get('/achievement/detail', 'AchievementController@show@detail.php');
 }
 // Thực hiện gọi hàm xử lí của Route để điều hướng
 $requestUri = $_SERVER['REQUEST_URI'];

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Phiếu Thu</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Quản Lý Phiếu Thu</h1>
+        <h2 class="mt-5">Danh Sách Phiếu Thu</h2>
+        <form method="post" action="">
+            <input type="hidden" name="delete_receipts" value="1">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select_all"></th>
+                        <th>ID</th>
+                        <th>Mã Đăng Ký</th>
+                        <th>Số Tiền Đã Nhận</th>
+                        <th>Tổng Tiền Đã Thanh Toán</th>
+                        <th>Ngày Nhận</th>
+                        <th>Phương Thức Thanh Toán</th>
+                        <th>Ghi Chú</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                                    <td><input type='checkbox' name='receipt_ids[]' value='" . $row["receipt_id"] . "'></td>
+                                    <td>" . $row["receipt_id"] . "</td>
+                                    <td>" . $row["registration_id"] . "</td>
+                                    <td>" . $row["amount_received"] . "</td>
+                                    <td>" . $row["total_payment"] . "</td>
+                                    <td>" . $row["received_date"] . "</td>
+                                    <td>" . $row["method"] . "</td>
+                                    <td>" . $row["note"] . "</td>
+                                    <td><a href='view_receipt.php?id=" . $row["receipt_id"] . "' class='btn btn-info'>Chi Tiết</a></td>
+                                  </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='9'>Không có phiếu thu nào</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-danger">Xóa Phiếu Thu Đã Chọn</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript for Select All Checkbox functionality
+        $(document).ready(function(){
+            $('#select_all').click(function(){
+                $('input[name="receipt_ids[]"]').prop('checked', this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

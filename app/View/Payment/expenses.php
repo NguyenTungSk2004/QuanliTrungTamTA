@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Phiếu Thu</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="container mt-3">
@@ -33,15 +35,18 @@
                         <td>2024-05-31</td>
                         <td>Chuyển khoản</td>
                         <td>Không có</td>
-                        <td><a href="view_expense.php?id=1" class="btn btn-info">Chi Tiết</a></td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#detailExpense">
+                            Chi tiết
+                        </button></td>
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-primary">+ Thêm Phiếu chi</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addExpense">+ Thêm Phiếu chi</button>
             <button type="submit" class="btn btn-danger">Xóa Phiếu chi</button>
         </form>
     </div>
-
+    <?php include "./app/View/Payment/addExpenses.php"?>
+    <?php include "./app/View/Payment/detailExpenses.php"?>
     <script>
         // JavaScript for Select All Checkbox functionality
         $(document).ready(function(){
