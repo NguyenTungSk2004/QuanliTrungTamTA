@@ -16,13 +16,13 @@ function sendEmail($to, $subject, $body, $fromName = 'My name is TungSK') {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'tung604345@gmail.com'; // Địa chỉ email của bạn
-        $mail->Password = 'mihrpmdjzkguwesh'; // Mật khẩu ứng dụng
+        $mail->Username = ''; // Địa chỉ email của bạn
+        $mail->Password = ''; // Mật khẩu ứng dụng
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
         // Thiết lập người gửi và người nhận
-        $mail->setFrom('tung604345@gmail.com', $fromName);
+        $mail->setFrom('', $fromName);
         $mail->addAddress($to);
 
         // Thêm header tùy chỉnh
