@@ -47,9 +47,9 @@ function sendEmail($to, $subject, $body, $fromName = 'My name is TungSK') {
 
 
 // // Gửi email với các thông tin mô phỏng
-// $to = 'ducddeptry@gmail.com';
-// $subject = 'Email of TungSK';
-// $body = 'Đây là test email mà thôi, cubu di';
+// $to = 'example@gmail.com';
+// $subject = 'Email of admin';
+// $body = 'Đây là test email mà thôi';
 // $result = sendEmail($to, $subject, $body);
 
 ?>
